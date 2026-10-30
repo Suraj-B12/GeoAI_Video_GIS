@@ -1,0 +1,332 @@
+[
+  {
+    "path": ".gitignore",
+    "bytes": 65,
+    "sha256": "49be14c1ecc57e676256cbd48acdb64b78e0da76658ba911f72b8bd77ccdc420"
+  },
+  {
+    "path": "README.md",
+    "bytes": 4134,
+    "sha256": "02daa6d78a4fe356d32afde032d708324b8cf38b74dbdcb1a83d5251f5a43983"
+  },
+  {
+    "path": "package-lock.json",
+    "bytes": 18670,
+    "sha256": "4064088d4d0125a4c4c25d252eb884f4c108f9b03a543036901a3e598db3fce8"
+  },
+  {
+    "path": "package.json",
+    "bytes": 199,
+    "sha256": "6871ad54c219f0c8355093bfb66fb4df71513b2652cf303b550e497034a10d4d"
+  },
+  {
+    "path": "tests/basemaps.test.cjs",
+    "bytes": 6364,
+    "sha256": "5159fdc77d55b5bb238cf9b616f55dd3b7819c0c9c193d1bb0b1d8bd1edeeceb"
+  },
+  {
+    "path": "tests/data-map-regressions.test.cjs",
+    "bytes": 12054,
+    "sha256": "ad77d74e0bf83608eed0f400d00d2ad32d10377bf4ee2c4ba34387129fdbf851"
+  },
+  {
+    "path": "tests/sample-contract.test.cjs",
+    "bytes": 8424,
+    "sha256": "949c734bf59fdc86bc725fdbe893af6fa4a545eae37b75bdb50a4c3c53aa191a"
+  },
+  {
+    "path": "tests/survey-data.test.cjs",
+    "bytes": 7620,
+    "sha256": "72f9a3ad1f8f7aa4f39dd6522c7d71d4b07909032bfb4f8dd558ced92552cc7e"
+  },
+  {
+    "path": "tests/survey-map.test.cjs",
+    "bytes": 7545,
+    "sha256": "7855c534e4668999046f6fe2fdb9c578fcc61908bbbede00f53a3e483c3da91f"
+  },
+  {
+    "path": "tests/survey-ui.test.cjs",
+    "bytes": 55341,
+    "sha256": "c6d9f1b2e627dd90105f4793f0a56539ff8a4543b3f82ca1c3f61ac8d3bc5d0f"
+  },
+  {
+    "path": "verification/api-integration-results.json",
+    "bytes": 2362,
+    "sha256": "5185c0717ddf9fa35b2eb0e6745a38f34e0a6b0a59fbb3b13b07f58d7a8dcf88"
+  },
+  {
+    "path": "verification/api-integration.py",
+    "bytes": 2582,
+    "sha256": "185ae30b62d9a4d6b154157e2c7fe98b2f24f56d0297f82c09944f3776c1cac6"
+  },
+  {
+    "path": "verification/automated-tests.txt",
+    "bytes": 7148,
+    "sha256": "4b4305025f62f366b8c056cf886e094e0ba1d66bb52e724104ff569cf2ac0f8d"
+  },
+  {
+    "path": "verification/browser-and-design-review.json",
+    "bytes": 3376,
+    "sha256": "f48c18cf9233574a3fdba324015fed7f0e2f3861179091e021a6818f43422a0b"
+  },
+  {
+    "path": "verification/python-override-tests.txt",
+    "bytes": 658,
+    "sha256": "cd8b84f7cb850acd4143ffaed683b538b269939d428a3caacaa79fce44487542"
+  },
+  {
+    "path": "verification/repository-review.md",
+    "bytes": 2610,
+    "sha256": "17cdb8343ebd52a8057bcd59f246b983748dd66a1bb9a75c5dc7b9940885366f"
+  },
+  {
+    "path": "verification/sample-truth.json",
+    "bytes": 33703,
+    "sha256": "67611dd1ea10bf899c5dde6bd8618020c2b28adc3c02ab416f94b3ca49d5cb49"
+  },
+  {
+    "path": "verification/sample-truth.py",
+    "bytes": 4043,
+    "sha256": "70ee3b6cb6513dd76a7d2c9652a5ee1b8e30e079157aacf5cddda3717c458e6c"
+  },
+  {
+    "path": "verification/video-only-verification.md",
+    "bytes": 3518,
+    "sha256": "c90c3df77a78dcce7f36a172efc9ef14ad146391b88bc1d1f8787884466d1e54"
+  },
+  {
+    "path": "webgis/LICENSE",
+    "bytes": 1099,
+    "sha256": "e3a47dcadd687d78f40bf3311453097c0c0e1738d6cdf5fe3d03dca3cc54b544"
+  },
+  {
+    "path": "webgis/README.md",
+    "bytes": 10110,
+    "sha256": "54b22d3cc70fde74be5f6b6b192b9a788411edb17117c2eaf776ed0101c0a4dd"
+  },
+  {
+    "path": "webgis/TEST-LOG.md",
+    "bytes": 8834,
+    "sha256": "c42451339208b73957764c272f90f6241effdbe55482a12ac79744c2b0a839d8"
+  },
+  {
+    "path": "webgis/app.js",
+    "bytes": 53085,
+    "sha256": "3c764935a47ac8656499dc33ba2858ca041b50ef37e19363406cd449b07c1793"
+  },
+  {
+    "path": "webgis/basemaps.js",
+    "bytes": 22301,
+    "sha256": "9210827002d40828831d44c26081678143bd4126f1d9041f4d9644317f267682"
+  },
+  {
+    "path": "webgis/config.js",
+    "bytes": 143,
+    "sha256": "7d51fbdcdf5e3d457fc2c389955fd98bed33c7806134afceb81f7fc97d993bf1"
+  },
+  {
+    "path": "webgis/data/README.md",
+    "bytes": 1416,
+    "sha256": "0e6d975fa40cdd497028ac65948d5ba0876b6e60794bdd27ea816187a1557c96"
+  },
+  {
+    "path": "webgis/data/bbmp-198-wards.geojson",
+    "bytes": 1881095,
+    "sha256": "06263e1a1e72fc58844a635c0b95e490962321e8489b476f2379771ce5128633"
+  },
+  {
+    "path": "webgis/data.js",
+    "bytes": 15703,
+    "sha256": "9d2fb27a0f0d4885bf4ceb9541c5982a97994036b9f670a2da3b30c6adbbe2b0"
+  },
+  {
+    "path": "webgis/favicon.svg",
+    "bytes": 526,
+    "sha256": "925fc49ef1fb0143e5761b60cc6c3d9f968ad6999dbda5f3bcbe378bf46fe53e"
+  },
+  {
+    "path": "webgis/fonts/Urbanist-OFL.txt",
+    "bytes": 4385,
+    "sha256": "ee1221b1c2d08920e5f9ca764eb228dafa5c8090df9cf665373c2287b9cb8f49"
+  },
+  {
+    "path": "webgis/fonts/rostex.outline.ttf",
+    "bytes": 138184,
+    "sha256": "86e18d825f93d2a022723b0f68346ea993dd7c29f0da1a263f1ff16de43781d2"
+  },
+  {
+    "path": "webgis/fonts/urbanist-400.ttf",
+    "bytes": 41060,
+    "sha256": "599ec73b0a0388ba35a861b6f40bb77f9874b77c13f6499b15ad734f5715505c"
+  },
+  {
+    "path": "webgis/fonts/urbanist-500.ttf",
+    "bytes": 41116,
+    "sha256": "7b9e538738641d4243175732167b2a9fe440f139fc783547846673988d87c95c"
+  },
+  {
+    "path": "webgis/fonts/urbanist-600.ttf",
+    "bytes": 41108,
+    "sha256": "beb886f39281fdb7f0927346b8d7ff5141a2866a43f21c5251fa73eed783224f"
+  },
+  {
+    "path": "webgis/fonts/urbanist-700.ttf",
+    "bytes": 40984,
+    "sha256": "e166b470f65b6c2a7bc8ac8718273ac63882e215caa76e1de7dc25c8875d243d"
+  },
+  {
+    "path": "webgis/fonts/urbanist-800.ttf",
+    "bytes": 41280,
+    "sha256": "2835c1a1d69ad4c936ed2736debf76951b57cd7fa0836ac8695b4a0f05c924e3"
+  },
+  {
+    "path": "webgis/index.html",
+    "bytes": 16231,
+    "sha256": "50fd60bcac5d46e4a38d8a92ede7dfba4f1f02a8d2361c250751baa1a4951d61"
+  },
+  {
+    "path": "webgis/map.js",
+    "bytes": 28324,
+    "sha256": "e3e9485221c1d2f73c272b2a465a8e97c9ce2eda133da9923071cd4ddec21e8d"
+  },
+  {
+    "path": "webgis/screenshots/motion-dashboard-desktop.jpg",
+    "bytes": 159962,
+    "sha256": "6275973b7d3c2678638d1f2cf9d150da634d81f63d2282d0d191a4b2a8cbdd74"
+  },
+  {
+    "path": "webgis/screenshots/motion-drive-desktop.jpg",
+    "bytes": 113776,
+    "sha256": "bc7a4af4b45431236ade78744f6518f6d928d8c7ef9168a3801ceef28e916ca0"
+  },
+  {
+    "path": "webgis/screenshots/motion-evidence-desktop.jpg",
+    "bytes": 151231,
+    "sha256": "505f5b965e17030db722c830ff202870c5852401002619a7c014c743981d8020"
+  },
+  {
+    "path": "webgis/screenshots/motion-evidence-mobile.jpg",
+    "bytes": 40795,
+    "sha256": "d90d0fa1ccce21204b43c43fe68e6d306a148d1e09b8af7e71cadd7bfd080b6f"
+  },
+  {
+    "path": "webgis/screenshots/motion-export-mobile.jpg",
+    "bytes": 47026,
+    "sha256": "725b2dfcac9884597d59b8ac25a8a4ce6ce620ce16387cc1301a913f4f65ae7d"
+  },
+  {
+    "path": "webgis/screenshots/motion-filters-mobile.jpg",
+    "bytes": 35136,
+    "sha256": "6129fc6f368525c6e6ee86273ff493bff5da25963441272018f5acf6513cf1db"
+  },
+  {
+    "path": "webgis/screenshots/motion-player-mobile.jpg",
+    "bytes": 50226,
+    "sha256": "2cdd9c267269e4b24ef73d545c384bcdd7f787b7d7ac458703de37e46f5022e1"
+  },
+  {
+    "path": "webgis/screenshots/motion-report-mobile.jpg",
+    "bytes": 42027,
+    "sha256": "27a33efc75acbe6762fc2ece8a5157c75277b3c83af33411d587db31acdeb4da"
+  },
+  {
+    "path": "webgis/screenshots/motion-settings-desktop.jpg",
+    "bytes": 112180,
+    "sha256": "a87025ccff9805b91258e01f784cada1b2ed61ed8079b20d2db1cf597873807a"
+  },
+  {
+    "path": "webgis/screenshots/motion-settings-mobile.jpg",
+    "bytes": 43308,
+    "sha256": "1f83deb58d149349c95b4fa4f8db25621c243e053960f85fe073bc1d21f8226d"
+  },
+  {
+    "path": "webgis/screenshots/motion-survey-desktop.jpg",
+    "bytes": 149848,
+    "sha256": "3494beec5c32807a7ce4d00ba06eb58363a7a946207cf5b08ceb6c803d392862"
+  },
+  {
+    "path": "webgis/screenshots/motion-survey-mobile.jpg",
+    "bytes": 32326,
+    "sha256": "353e59d3129d9c45c972dfbd8b84154ec58c6195ee7192f0c1c975e49e85027c"
+  },
+  {
+    "path": "webgis/screenshots/repository-detector-details.jpg",
+    "bytes": 103034,
+    "sha256": "aa8df1d6a26ed9059d4339d0adb5be1505ff6483284a5da801bcb914ceb9f690"
+  },
+  {
+    "path": "webgis/styles.css",
+    "bytes": 85131,
+    "sha256": "a9c10039ef55fac56e93d7993c576a0b46fb681cd442695aff3e2b3658f3fd0d"
+  },
+  {
+    "path": "webgis/vendor/MarkerCluster.Default.css",
+    "bytes": 1287,
+    "sha256": "61258232d98d64dc2a7b1e02130d67421bc5b9bda5994eef70228ff97570c170"
+  },
+  {
+    "path": "webgis/vendor/MarkerCluster.css",
+    "bytes": 872,
+    "sha256": "614dea0a98ff3f4ead74f04918f6b1d1b9ba435c25b5fc23b21a394d1e3e4d87"
+  },
+  {
+    "path": "webgis/vendor/heat-LICENSE",
+    "bytes": 1321,
+    "sha256": "9010b843aad8e450890fc18dae2dfec00e68c10da775515801c42878afbb0da1"
+  },
+  {
+    "path": "webgis/vendor/leaflet-LICENSE",
+    "bytes": 1395,
+    "sha256": "53e8dc25862014e4324741ca18fbe3611e11d42ef69f59f86ea8c5389647d4cb"
+  },
+  {
+    "path": "webgis/vendor/leaflet-heat.js",
+    "bytes": 5158,
+    "sha256": "eb952aae5806a1102729f291bab887dde783ace859819a354827a776e73e486a"
+  },
+  {
+    "path": "webgis/vendor/leaflet-maplibre-gl.js",
+    "bytes": 9296,
+    "sha256": "1e6cf8cb3eb5fd909879aa1bf36a383fb506c9a5b2dbbfababce65a294dd1fcb"
+  },
+  {
+    "path": "webgis/vendor/leaflet.css",
+    "bytes": 14806,
+    "sha256": "a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6"
+  },
+  {
+    "path": "webgis/vendor/leaflet.js",
+    "bytes": 147552,
+    "sha256": "db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a"
+  },
+  {
+    "path": "webgis/vendor/leaflet.markercluster.js",
+    "bytes": 34136,
+    "sha256": "1e4e1d22972a3926f48598e0caf14e3fe7049835d428a344fed4f9e3665b3508"
+  },
+  {
+    "path": "webgis/vendor/maplibre-LICENSE",
+    "bytes": 5984,
+    "sha256": "ee5fc05a0677eaf69601d2c7db0d9ecd6cc27c3abc1d0733bc9ed34707cf8ef2"
+  },
+  {
+    "path": "webgis/vendor/maplibre-gl.css",
+    "bytes": 70024,
+    "sha256": "ab1e70d59ec40465bae7e7030da2f3ccf28133fd502e62bd598eefbadfd7a732"
+  },
+  {
+    "path": "webgis/vendor/maplibre-gl.js",
+    "bytes": 1056837,
+    "sha256": "45a9b07a9189ce56054c620a947ccf41e291e58c95e9b61533b740aaa65ee5cb"
+  },
+  {
+    "path": "webgis/vendor/maplibre-leaflet-LICENSE",
+    "bytes": 767,
+    "sha256": "eaa721ba158cbeff47ad53b1035dfc26ff744df66662c93ff715c9885197ebf3"
+  },
+  {
+    "path": "webgis/vendor/markercluster-LICENSE",
+    "bytes": 1052,
+    "sha256": "3133dacd38250bd1f524d8166cc60a016a382522e062fce143691c65bf5e4b3d"
+  }
+]

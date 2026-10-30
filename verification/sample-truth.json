@@ -1,0 +1,1339 @@
+{
+  "checks": [
+    {
+      "name": "video_total",
+      "actual": 813,
+      "expected": 813,
+      "passed": true
+    },
+    {
+      "name": "citizen_default",
+      "actual": 131,
+      "expected": 131,
+      "passed": true
+    },
+    {
+      "name": "citizen_include_review",
+      "actual": 344,
+      "expected": 344,
+      "passed": true
+    },
+    {
+      "name": "potholes",
+      "actual": 131,
+      "expected": 131,
+      "passed": true
+    },
+    {
+      "name": "medium_high_distress",
+      "actual": 75,
+      "expected": 75,
+      "passed": true
+    },
+    {
+      "name": "high_confidence_distress",
+      "actual": 47,
+      "expected": 47,
+      "passed": true
+    },
+    {
+      "name": "needs_review",
+      "actual": 389,
+      "expected": 389,
+      "passed": true
+    },
+    {
+      "name": "reviewed",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "summary:segments",
+      "actual": 813,
+      "expected": 813,
+      "passed": true
+    },
+    {
+      "name": "summary:segments_by_status",
+      "actual": {
+        "send": 813,
+        "audit": 0,
+        "skip": 0,
+        "not_covered": 0
+      },
+      "expected": {
+        "send": 813,
+        "audit": 0,
+        "skip": 0,
+        "not_covered": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "summary:segments_by_vlm_class",
+      "actual": {
+        "distress": 164,
+        "normal": 649,
+        "unknown": 0,
+        "pending": 0,
+        "not_sent": 0,
+        "not_covered": 0
+      },
+      "expected": {
+        "distress": 164,
+        "normal": 649,
+        "unknown": 0,
+        "pending": 0,
+        "not_sent": 0,
+        "not_covered": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "summary:answered",
+      "actual": 813,
+      "expected": 813,
+      "passed": true
+    },
+    {
+      "name": "summary:answered_by_assessment_status",
+      "actual": {
+        "classified": 424,
+        "expert_review": 389
+      },
+      "expected": {
+        "classified": 424,
+        "expert_review": 389
+      },
+      "passed": true
+    },
+    {
+      "name": "summary:answered_by_final_severity",
+      "actual": {
+        "None": 656,
+        "Low": 82,
+        "Medium": 74,
+        "High": 1,
+        "Unknown": 0
+      },
+      "expected": {
+        "None": 656,
+        "Low": 82,
+        "Medium": 74,
+        "High": 1,
+        "Unknown": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "summary:needs_expert_review",
+      "actual": 389,
+      "expected": 389,
+      "passed": true
+    },
+    {
+      "name": "summary:expert_reviewed",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "summary:with_image",
+      "actual": 813,
+      "expected": 813,
+      "passed": true
+    },
+    {
+      "name": "summary:route_m",
+      "actual": 4060.31,
+      "expected": 4060.31,
+      "passed": true
+    },
+    {
+      "name": "summary:surveyed_m",
+      "actual": 4060.31,
+      "expected": 4060.31,
+      "passed": true
+    },
+    {
+      "name": "summary:not_covered_m",
+      "actual": 0.0,
+      "expected": 0.0,
+      "passed": true
+    },
+    {
+      "name": "summary:sent_m",
+      "actual": 4060.31,
+      "expected": 4060.31,
+      "passed": true
+    },
+    {
+      "name": "summary:classified_m",
+      "actual": 4060.31,
+      "expected": 4060.31,
+      "passed": true
+    },
+    {
+      "name": "summary:distress_m",
+      "actual": 815.31,
+      "expected": 815.31,
+      "passed": true
+    },
+    {
+      "name": "summary:normal_m",
+      "actual": 3245.0,
+      "expected": 3245.0,
+      "passed": true
+    },
+    {
+      "name": "summary:unknown_m",
+      "actual": 0.0,
+      "expected": 0.0,
+      "passed": true
+    },
+    {
+      "name": "summary:pending_m",
+      "actual": 0.0,
+      "expected": 0.0,
+      "passed": true
+    },
+    {
+      "name": "summary:not_sent_m",
+      "actual": 0.0,
+      "expected": 0.0,
+      "passed": true
+    },
+    {
+      "name": "summary:pct_distress_of_surveyed",
+      "actual": 20.08,
+      "expected": 20.08,
+      "passed": true
+    },
+    {
+      "name": "summary:pct_distress_of_classified",
+      "actual": 20.08,
+      "expected": 20.08,
+      "passed": true
+    },
+    {
+      "name": "summary:labels",
+      "actual": [
+        {
+          "label": "Bleeding",
+          "segments": 61,
+          "length_m": 305.0,
+          "pct_of_surveyed": 7.512,
+          "pct_of_classified": 7.512
+        },
+        {
+          "label": "Streaking",
+          "segments": 7,
+          "length_m": 35.0,
+          "pct_of_surveyed": 0.862,
+          "pct_of_classified": 0.862
+        },
+        {
+          "label": "Hungry Surface",
+          "segments": 9,
+          "length_m": 45.0,
+          "pct_of_surveyed": 1.108,
+          "pct_of_classified": 1.108
+        },
+        {
+          "label": "Hairline Cracks",
+          "segments": 0,
+          "length_m": 0.0,
+          "pct_of_surveyed": 0.0,
+          "pct_of_classified": 0.0
+        },
+        {
+          "label": "Alligator Cracking",
+          "segments": 9,
+          "length_m": 43.05,
+          "pct_of_surveyed": 1.06,
+          "pct_of_classified": 1.06
+        },
+        {
+          "label": "Longitudinal Cracking",
+          "segments": 73,
+          "length_m": 360.55,
+          "pct_of_surveyed": 8.88,
+          "pct_of_classified": 8.88
+        },
+        {
+          "label": "Transverse Cracking",
+          "segments": 7,
+          "length_m": 35.0,
+          "pct_of_surveyed": 0.862,
+          "pct_of_classified": 0.862
+        },
+        {
+          "label": "Edge Cracking",
+          "segments": 4,
+          "length_m": 20.0,
+          "pct_of_surveyed": 0.493,
+          "pct_of_classified": 0.493
+        },
+        {
+          "label": "Slippage",
+          "segments": 0,
+          "length_m": 0.0,
+          "pct_of_surveyed": 0.0,
+          "pct_of_classified": 0.0
+        },
+        {
+          "label": "Rutting",
+          "segments": 0,
+          "length_m": 0.0,
+          "pct_of_surveyed": 0.0,
+          "pct_of_classified": 0.0
+        },
+        {
+          "label": "Corrugation",
+          "segments": 0,
+          "length_m": 0.0,
+          "pct_of_surveyed": 0.0,
+          "pct_of_classified": 0.0
+        },
+        {
+          "label": "Shoving",
+          "segments": 0,
+          "length_m": 0.0,
+          "pct_of_surveyed": 0.0,
+          "pct_of_classified": 0.0
+        },
+        {
+          "label": "Shallow Depression",
+          "segments": 0,
+          "length_m": 0.0,
+          "pct_of_surveyed": 0.0,
+          "pct_of_classified": 0.0
+        },
+        {
+          "label": "Settlement",
+          "segments": 0,
+          "length_m": 0.0,
+          "pct_of_surveyed": 0.0,
+          "pct_of_classified": 0.0
+        },
+        {
+          "label": "Stripping",
+          "segments": 0,
+          "length_m": 0.0,
+          "pct_of_surveyed": 0.0,
+          "pct_of_classified": 0.0
+        },
+        {
+          "label": "Ravelling",
+          "segments": 0,
+          "length_m": 0.0,
+          "pct_of_surveyed": 0.0,
+          "pct_of_classified": 0.0
+        },
+        {
+          "label": "Potholes",
+          "segments": 131,
+          "length_m": 652.26,
+          "pct_of_surveyed": 16.064,
+          "pct_of_classified": 16.064
+        },
+        {
+          "label": "Edge Breaking",
+          "segments": 18,
+          "length_m": 89.76,
+          "pct_of_surveyed": 2.211,
+          "pct_of_classified": 2.211
+        },
+        {
+          "label": "Normal",
+          "segments": 649,
+          "length_m": 3245.0,
+          "pct_of_surveyed": 79.92,
+          "pct_of_classified": 79.92
+        }
+      ],
+      "expected": [
+        {
+          "label": "Bleeding",
+          "segments": 61,
+          "length_m": 305.0,
+          "pct_of_surveyed": 7.512,
+          "pct_of_classified": 7.512
+        },
+        {
+          "label": "Streaking",
+          "segments": 7,
+          "length_m": 35.0,
+          "pct_of_surveyed": 0.862,
+          "pct_of_classified": 0.862
+        },
+        {
+          "label": "Hungry Surface",
+          "segments": 9,
+          "length_m": 45.0,
+          "pct_of_surveyed": 1.108,
+          "pct_of_classified": 1.108
+        },
+        {
+          "label": "Hairline Cracks",
+          "segments": 0,
+          "length_m": 0.0,
+          "pct_of_surveyed": 0.0,
+          "pct_of_classified": 0.0
+        },
+        {
+          "label": "Alligator Cracking",
+          "segments": 9,
+          "length_m": 43.05,
+          "pct_of_surveyed": 1.06,
+          "pct_of_classified": 1.06
+        },
+        {
+          "label": "Longitudinal Cracking",
+          "segments": 73,
+          "length_m": 360.55,
+          "pct_of_surveyed": 8.88,
+          "pct_of_classified": 8.88
+        },
+        {
+          "label": "Transverse Cracking",
+          "segments": 7,
+          "length_m": 35.0,
+          "pct_of_surveyed": 0.862,
+          "pct_of_classified": 0.862
+        },
+        {
+          "label": "Edge Cracking",
+          "segments": 4,
+          "length_m": 20.0,
+          "pct_of_surveyed": 0.493,
+          "pct_of_classified": 0.493
+        },
+        {
+          "label": "Slippage",
+          "segments": 0,
+          "length_m": 0.0,
+          "pct_of_surveyed": 0.0,
+          "pct_of_classified": 0.0
+        },
+        {
+          "label": "Rutting",
+          "segments": 0,
+          "length_m": 0.0,
+          "pct_of_surveyed": 0.0,
+          "pct_of_classified": 0.0
+        },
+        {
+          "label": "Corrugation",
+          "segments": 0,
+          "length_m": 0.0,
+          "pct_of_surveyed": 0.0,
+          "pct_of_classified": 0.0
+        },
+        {
+          "label": "Shoving",
+          "segments": 0,
+          "length_m": 0.0,
+          "pct_of_surveyed": 0.0,
+          "pct_of_classified": 0.0
+        },
+        {
+          "label": "Shallow Depression",
+          "segments": 0,
+          "length_m": 0.0,
+          "pct_of_surveyed": 0.0,
+          "pct_of_classified": 0.0
+        },
+        {
+          "label": "Settlement",
+          "segments": 0,
+          "length_m": 0.0,
+          "pct_of_surveyed": 0.0,
+          "pct_of_classified": 0.0
+        },
+        {
+          "label": "Stripping",
+          "segments": 0,
+          "length_m": 0.0,
+          "pct_of_surveyed": 0.0,
+          "pct_of_classified": 0.0
+        },
+        {
+          "label": "Ravelling",
+          "segments": 0,
+          "length_m": 0.0,
+          "pct_of_surveyed": 0.0,
+          "pct_of_classified": 0.0
+        },
+        {
+          "label": "Potholes",
+          "segments": 131,
+          "length_m": 652.26,
+          "pct_of_surveyed": 16.064,
+          "pct_of_classified": 16.064
+        },
+        {
+          "label": "Edge Breaking",
+          "segments": 18,
+          "length_m": 89.76,
+          "pct_of_surveyed": 2.211,
+          "pct_of_classified": 2.211
+        },
+        {
+          "label": "Normal",
+          "segments": 649,
+          "length_m": 3245.0,
+          "pct_of_surveyed": 79.92,
+          "pct_of_classified": 79.92
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "video_id_uniqueness",
+      "actual": 813,
+      "expected": 813,
+      "passed": true
+    },
+    {
+      "name": "all_segments_send",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "all_segments_answered",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "all_segments_preview_urls",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "preview_w480_files",
+      "actual": 813,
+      "expected": 813,
+      "passed": true
+    },
+    {
+      "name": "preview_w1280_files",
+      "actual": 813,
+      "expected": 813,
+      "passed": true
+    },
+    {
+      "name": "session_segments:20261026T114332Z_SM-G991B-F0D1_f428",
+      "actual": 230,
+      "expected": 230,
+      "passed": true
+    },
+    {
+      "name": "per_km_sum:20261026T114332Z_SM-G991B-F0D1_f428:surveyed_m",
+      "actual": 1149.76,
+      "expected": 1149.76,
+      "passed": true
+    },
+    {
+      "name": "per_km_sum:20261026T114332Z_SM-G991B-F0D1_f428:not_covered_m",
+      "actual": 0.0,
+      "expected": 0.0,
+      "passed": true
+    },
+    {
+      "name": "per_km_sum:20261026T114332Z_SM-G991B-F0D1_f428:classified_m",
+      "actual": 1149.76,
+      "expected": 1149.76,
+      "passed": true
+    },
+    {
+      "name": "per_km_sum:20261026T114332Z_SM-G991B-F0D1_f428:distress_m",
+      "actual": 204.76,
+      "expected": 204.76,
+      "passed": true
+    },
+    {
+      "name": "per_km_sum:20261026T114332Z_SM-G991B-F0D1_f428:normal_m",
+      "actual": 945.0,
+      "expected": 945.0,
+      "passed": true
+    },
+    {
+      "name": "per_km_recomputed:20261026T114332Z_SM-G991B-F0D1_f428",
+      "actual": [
+        {
+          "km": 0,
+          "from_m": 0.0,
+          "to_m": 1000.0,
+          "surveyed_m": 1000.0,
+          "not_covered_m": 0.0,
+          "classified_m": 1000.0,
+          "distress_m": 175.0,
+          "normal_m": 825.0,
+          "unknown_m": 0.0,
+          "pending_m": 0.0,
+          "not_sent_m": 0.0,
+          "labels_m": {
+            "Bleeding": 75.0,
+            "Streaking": 10.0,
+            "Hungry Surface": 10.0,
+            "Alligator Cracking": 20.0,
+            "Longitudinal Cracking": 50.0,
+            "Transverse Cracking": 5.0,
+            "Edge Cracking": 10.0,
+            "Potholes": 135.0,
+            "Edge Breaking": 10.0
+          },
+          "pct_distress_of_surveyed": 17.5,
+          "pct_distress_of_classified": 17.5
+        },
+        {
+          "km": 1,
+          "from_m": 1000.0,
+          "to_m": 1149.76,
+          "surveyed_m": 149.76,
+          "not_covered_m": 0.0,
+          "classified_m": 149.76,
+          "distress_m": 29.76,
+          "normal_m": 120.0,
+          "unknown_m": 0.0,
+          "pending_m": 0.0,
+          "not_sent_m": 0.0,
+          "labels_m": {
+            "Bleeding": 15.0,
+            "Hungry Surface": 5.0,
+            "Longitudinal Cracking": 5.0,
+            "Potholes": 24.76,
+            "Edge Breaking": 9.76
+          },
+          "pct_distress_of_surveyed": 19.872,
+          "pct_distress_of_classified": 19.872
+        }
+      ],
+      "expected": [
+        {
+          "km": 0,
+          "from_m": 0.0,
+          "to_m": 1000.0,
+          "surveyed_m": 1000.0,
+          "not_covered_m": 0.0,
+          "classified_m": 1000.0,
+          "distress_m": 175.0,
+          "normal_m": 825.0,
+          "unknown_m": 0.0,
+          "pending_m": 0.0,
+          "not_sent_m": 0.0,
+          "labels_m": {
+            "Bleeding": 75.0,
+            "Streaking": 10.0,
+            "Hungry Surface": 10.0,
+            "Alligator Cracking": 20.0,
+            "Longitudinal Cracking": 50.0,
+            "Transverse Cracking": 5.0,
+            "Edge Cracking": 10.0,
+            "Potholes": 135.0,
+            "Edge Breaking": 10.0
+          },
+          "pct_distress_of_surveyed": 17.5,
+          "pct_distress_of_classified": 17.5
+        },
+        {
+          "km": 1,
+          "from_m": 1000.0,
+          "to_m": 1149.76,
+          "surveyed_m": 149.76,
+          "not_covered_m": 0.0,
+          "classified_m": 149.76,
+          "distress_m": 29.76,
+          "normal_m": 120.0,
+          "unknown_m": 0.0,
+          "pending_m": 0.0,
+          "not_sent_m": 0.0,
+          "labels_m": {
+            "Bleeding": 15.0,
+            "Hungry Surface": 5.0,
+            "Longitudinal Cracking": 5.0,
+            "Potholes": 24.76,
+            "Edge Breaking": 9.76
+          },
+          "pct_distress_of_surveyed": 19.872,
+          "pct_distress_of_classified": 19.872
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "session_segments:20261026T114907Z_SM-G991B-F0D1_293d",
+      "actual": 55,
+      "expected": 55,
+      "passed": true
+    },
+    {
+      "name": "per_km_sum:20261026T114907Z_SM-G991B-F0D1_293d:surveyed_m",
+      "actual": 273.05,
+      "expected": 273.05,
+      "passed": true
+    },
+    {
+      "name": "per_km_sum:20261026T114907Z_SM-G991B-F0D1_293d:not_covered_m",
+      "actual": 0.0,
+      "expected": 0.0,
+      "passed": true
+    },
+    {
+      "name": "per_km_sum:20261026T114907Z_SM-G991B-F0D1_293d:classified_m",
+      "actual": 273.05,
+      "expected": 273.05,
+      "passed": true
+    },
+    {
+      "name": "per_km_sum:20261026T114907Z_SM-G991B-F0D1_293d:distress_m",
+      "actual": 103.05,
+      "expected": 103.05,
+      "passed": true
+    },
+    {
+      "name": "per_km_sum:20261026T114907Z_SM-G991B-F0D1_293d:normal_m",
+      "actual": 170.0,
+      "expected": 170.0,
+      "passed": true
+    },
+    {
+      "name": "per_km_recomputed:20261026T114907Z_SM-G991B-F0D1_293d",
+      "actual": [
+        {
+          "km": 0,
+          "from_m": 0.0,
+          "to_m": 273.05,
+          "surveyed_m": 273.05,
+          "not_covered_m": 0.0,
+          "classified_m": 273.05,
+          "distress_m": 103.05,
+          "normal_m": 170.0,
+          "unknown_m": 0.0,
+          "pending_m": 0.0,
+          "not_sent_m": 0.0,
+          "labels_m": {
+            "Bleeding": 40.0,
+            "Hungry Surface": 15.0,
+            "Alligator Cracking": 3.05,
+            "Longitudinal Cracking": 8.05,
+            "Potholes": 85.0,
+            "Edge Breaking": 45.0
+          },
+          "pct_distress_of_surveyed": 37.74,
+          "pct_distress_of_classified": 37.74
+        }
+      ],
+      "expected": [
+        {
+          "km": 0,
+          "from_m": 0.0,
+          "to_m": 273.05,
+          "surveyed_m": 273.05,
+          "not_covered_m": 0.0,
+          "classified_m": 273.05,
+          "distress_m": 103.05,
+          "normal_m": 170.0,
+          "unknown_m": 0.0,
+          "pending_m": 0.0,
+          "not_sent_m": 0.0,
+          "labels_m": {
+            "Bleeding": 40.0,
+            "Hungry Surface": 15.0,
+            "Alligator Cracking": 3.05,
+            "Longitudinal Cracking": 8.05,
+            "Potholes": 85.0,
+            "Edge Breaking": 45.0
+          },
+          "pct_distress_of_surveyed": 37.74,
+          "pct_distress_of_classified": 37.74
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "session_segments:20261027T050257Z_SM-G991B-F0D1_d47c",
+      "actual": 528,
+      "expected": 528,
+      "passed": true
+    },
+    {
+      "name": "per_km_sum:20261027T050257Z_SM-G991B-F0D1_d47c:surveyed_m",
+      "actual": 2637.5,
+      "expected": 2637.5,
+      "passed": true
+    },
+    {
+      "name": "per_km_sum:20261027T050257Z_SM-G991B-F0D1_d47c:not_covered_m",
+      "actual": 0.0,
+      "expected": 0.0,
+      "passed": true
+    },
+    {
+      "name": "per_km_sum:20261027T050257Z_SM-G991B-F0D1_d47c:classified_m",
+      "actual": 2637.5,
+      "expected": 2637.5,
+      "passed": true
+    },
+    {
+      "name": "per_km_sum:20261027T050257Z_SM-G991B-F0D1_d47c:distress_m",
+      "actual": 507.5,
+      "expected": 507.5,
+      "passed": true
+    },
+    {
+      "name": "per_km_sum:20261027T050257Z_SM-G991B-F0D1_d47c:normal_m",
+      "actual": 2130.0,
+      "expected": 2130.0,
+      "passed": true
+    },
+    {
+      "name": "per_km_recomputed:20261027T050257Z_SM-G991B-F0D1_d47c",
+      "actual": [
+        {
+          "km": 0,
+          "from_m": 0.0,
+          "to_m": 1000.0,
+          "surveyed_m": 1000.0,
+          "not_covered_m": 0.0,
+          "classified_m": 1000.0,
+          "distress_m": 90.0,
+          "normal_m": 910.0,
+          "unknown_m": 0.0,
+          "pending_m": 0.0,
+          "not_sent_m": 0.0,
+          "labels_m": {
+            "Bleeding": 60.0,
+            "Streaking": 15.0,
+            "Alligator Cracking": 10.0,
+            "Longitudinal Cracking": 20.0,
+            "Potholes": 65.0,
+            "Edge Breaking": 10.0
+          },
+          "pct_distress_of_surveyed": 9.0,
+          "pct_distress_of_classified": 9.0
+        },
+        {
+          "km": 1,
+          "from_m": 1000.0,
+          "to_m": 2000.0,
+          "surveyed_m": 1000.0,
+          "not_covered_m": 0.0,
+          "classified_m": 1000.0,
+          "distress_m": 285.0,
+          "normal_m": 715.0,
+          "unknown_m": 0.0,
+          "pending_m": 0.0,
+          "not_sent_m": 0.0,
+          "labels_m": {
+            "Bleeding": 75.0,
+            "Streaking": 10.0,
+            "Hungry Surface": 10.0,
+            "Longitudinal Cracking": 190.0,
+            "Transverse Cracking": 10.0,
+            "Edge Cracking": 5.0,
+            "Potholes": 245.0,
+            "Edge Breaking": 15.0
+          },
+          "pct_distress_of_surveyed": 28.5,
+          "pct_distress_of_classified": 28.5
+        },
+        {
+          "km": 2,
+          "from_m": 2000.0,
+          "to_m": 2637.5,
+          "surveyed_m": 637.5,
+          "not_covered_m": 0.0,
+          "classified_m": 637.5,
+          "distress_m": 132.5,
+          "normal_m": 505.0,
+          "unknown_m": 0.0,
+          "pending_m": 0.0,
+          "not_sent_m": 0.0,
+          "labels_m": {
+            "Bleeding": 40.0,
+            "Hungry Surface": 5.0,
+            "Alligator Cracking": 10.0,
+            "Longitudinal Cracking": 87.5,
+            "Transverse Cracking": 20.0,
+            "Edge Cracking": 5.0,
+            "Potholes": 97.5
+          },
+          "pct_distress_of_surveyed": 20.784,
+          "pct_distress_of_classified": 20.784
+        }
+      ],
+      "expected": [
+        {
+          "km": 0,
+          "from_m": 0.0,
+          "to_m": 1000.0,
+          "surveyed_m": 1000.0,
+          "not_covered_m": 0.0,
+          "classified_m": 1000.0,
+          "distress_m": 90.0,
+          "normal_m": 910.0,
+          "unknown_m": 0.0,
+          "pending_m": 0.0,
+          "not_sent_m": 0.0,
+          "labels_m": {
+            "Bleeding": 60.0,
+            "Streaking": 15.0,
+            "Alligator Cracking": 10.0,
+            "Longitudinal Cracking": 20.0,
+            "Potholes": 65.0,
+            "Edge Breaking": 10.0
+          },
+          "pct_distress_of_surveyed": 9.0,
+          "pct_distress_of_classified": 9.0
+        },
+        {
+          "km": 1,
+          "from_m": 1000.0,
+          "to_m": 2000.0,
+          "surveyed_m": 1000.0,
+          "not_covered_m": 0.0,
+          "classified_m": 1000.0,
+          "distress_m": 285.0,
+          "normal_m": 715.0,
+          "unknown_m": 0.0,
+          "pending_m": 0.0,
+          "not_sent_m": 0.0,
+          "labels_m": {
+            "Bleeding": 75.0,
+            "Streaking": 10.0,
+            "Hungry Surface": 10.0,
+            "Longitudinal Cracking": 190.0,
+            "Transverse Cracking": 10.0,
+            "Edge Cracking": 5.0,
+            "Potholes": 245.0,
+            "Edge Breaking": 15.0
+          },
+          "pct_distress_of_surveyed": 28.5,
+          "pct_distress_of_classified": 28.5
+        },
+        {
+          "km": 2,
+          "from_m": 2000.0,
+          "to_m": 2637.5,
+          "surveyed_m": 637.5,
+          "not_covered_m": 0.0,
+          "classified_m": 637.5,
+          "distress_m": 132.5,
+          "normal_m": 505.0,
+          "unknown_m": 0.0,
+          "pending_m": 0.0,
+          "not_sent_m": 0.0,
+          "labels_m": {
+            "Bleeding": 40.0,
+            "Hungry Surface": 5.0,
+            "Alligator Cracking": 10.0,
+            "Longitudinal Cracking": 87.5,
+            "Transverse Cracking": 20.0,
+            "Edge Cracking": 5.0,
+            "Potholes": 97.5
+          },
+          "pct_distress_of_surveyed": 20.784,
+          "pct_distress_of_classified": 20.784
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "manifest_integrity_failures",
+      "actual": [],
+      "expected": [],
+      "passed": true
+    }
+  ],
+  "passed": 58,
+  "total": 58,
+  "manifest_files_verified": 1664,
+  "summary": {
+    "segments": 813,
+    "segments_by_status": {
+      "send": 813,
+      "audit": 0,
+      "skip": 0,
+      "not_covered": 0
+    },
+    "segments_by_vlm_class": {
+      "distress": 164,
+      "normal": 649,
+      "unknown": 0,
+      "pending": 0,
+      "not_sent": 0,
+      "not_covered": 0
+    },
+    "answered": 813,
+    "answered_by_assessment_status": {
+      "classified": 424,
+      "expert_review": 389
+    },
+    "answered_by_final_severity": {
+      "None": 656,
+      "Low": 82,
+      "Medium": 74,
+      "High": 1,
+      "Unknown": 0
+    },
+    "needs_expert_review": 389,
+    "expert_reviewed": 0,
+    "with_image": 813,
+    "route_m": 4060.31,
+    "surveyed_m": 4060.31,
+    "not_covered_m": 0.0,
+    "sent_m": 4060.31,
+    "classified_m": 4060.31,
+    "distress_m": 815.31,
+    "normal_m": 3245.0,
+    "unknown_m": 0.0,
+    "pending_m": 0.0,
+    "not_sent_m": 0.0,
+    "pct_distress_of_surveyed": 20.08,
+    "pct_distress_of_classified": 20.08,
+    "labels": [
+      {
+        "label": "Bleeding",
+        "segments": 61,
+        "length_m": 305.0,
+        "pct_of_surveyed": 7.512,
+        "pct_of_classified": 7.512
+      },
+      {
+        "label": "Streaking",
+        "segments": 7,
+        "length_m": 35.0,
+        "pct_of_surveyed": 0.862,
+        "pct_of_classified": 0.862
+      },
+      {
+        "label": "Hungry Surface",
+        "segments": 9,
+        "length_m": 45.0,
+        "pct_of_surveyed": 1.108,
+        "pct_of_classified": 1.108
+      },
+      {
+        "label": "Hairline Cracks",
+        "segments": 0,
+        "length_m": 0.0,
+        "pct_of_surveyed": 0.0,
+        "pct_of_classified": 0.0
+      },
+      {
+        "label": "Alligator Cracking",
+        "segments": 9,
+        "length_m": 43.05,
+        "pct_of_surveyed": 1.06,
+        "pct_of_classified": 1.06
+      },
+      {
+        "label": "Longitudinal Cracking",
+        "segments": 73,
+        "length_m": 360.55,
+        "pct_of_surveyed": 8.88,
+        "pct_of_classified": 8.88
+      },
+      {
+        "label": "Transverse Cracking",
+        "segments": 7,
+        "length_m": 35.0,
+        "pct_of_surveyed": 0.862,
+        "pct_of_classified": 0.862
+      },
+      {
+        "label": "Edge Cracking",
+        "segments": 4,
+        "length_m": 20.0,
+        "pct_of_surveyed": 0.493,
+        "pct_of_classified": 0.493
+      },
+      {
+        "label": "Slippage",
+        "segments": 0,
+        "length_m": 0.0,
+        "pct_of_surveyed": 0.0,
+        "pct_of_classified": 0.0
+      },
+      {
+        "label": "Rutting",
+        "segments": 0,
+        "length_m": 0.0,
+        "pct_of_surveyed": 0.0,
+        "pct_of_classified": 0.0
+      },
+      {
+        "label": "Corrugation",
+        "segments": 0,
+        "length_m": 0.0,
+        "pct_of_surveyed": 0.0,
+        "pct_of_classified": 0.0
+      },
+      {
+        "label": "Shoving",
+        "segments": 0,
+        "length_m": 0.0,
+        "pct_of_surveyed": 0.0,
+        "pct_of_classified": 0.0
+      },
+      {
+        "label": "Shallow Depression",
+        "segments": 0,
+        "length_m": 0.0,
+        "pct_of_surveyed": 0.0,
+        "pct_of_classified": 0.0
+      },
+      {
+        "label": "Settlement",
+        "segments": 0,
+        "length_m": 0.0,
+        "pct_of_surveyed": 0.0,
+        "pct_of_classified": 0.0
+      },
+      {
+        "label": "Stripping",
+        "segments": 0,
+        "length_m": 0.0,
+        "pct_of_surveyed": 0.0,
+        "pct_of_classified": 0.0
+      },
+      {
+        "label": "Ravelling",
+        "segments": 0,
+        "length_m": 0.0,
+        "pct_of_surveyed": 0.0,
+        "pct_of_classified": 0.0
+      },
+      {
+        "label": "Potholes",
+        "segments": 131,
+        "length_m": 652.26,
+        "pct_of_surveyed": 16.064,
+        "pct_of_classified": 16.064
+      },
+      {
+        "label": "Edge Breaking",
+        "segments": 18,
+        "length_m": 89.76,
+        "pct_of_surveyed": 2.211,
+        "pct_of_classified": 2.211
+      },
+      {
+        "label": "Normal",
+        "segments": 649,
+        "length_m": 3245.0,
+        "pct_of_surveyed": 79.92,
+        "pct_of_classified": 79.92
+      }
+    ]
+  },
+  "sessions": [
+    {
+      "session_id": "20261026T114332Z_SM-G991B-F0D1_f428",
+      "road_name": "test 1",
+      "road_id": "TST-1",
+      "local_date": "2026-10-26",
+      "state": "stored",
+      "segments": 230,
+      "route_m": 1149.76,
+      "surveyed_m": 1149.76,
+      "classified_m": 1149.76,
+      "distress_m": 204.76,
+      "not_covered_m": 0.0,
+      "pct_distress_of_surveyed": 17.809,
+      "per_km": [
+        {
+          "km": 0,
+          "from_m": 0.0,
+          "to_m": 1000.0,
+          "surveyed_m": 1000.0,
+          "not_covered_m": 0.0,
+          "classified_m": 1000.0,
+          "distress_m": 175.0,
+          "normal_m": 825.0,
+          "unknown_m": 0.0,
+          "pending_m": 0.0,
+          "not_sent_m": 0.0,
+          "labels_m": {
+            "Bleeding": 75.0,
+            "Streaking": 10.0,
+            "Hungry Surface": 10.0,
+            "Alligator Cracking": 20.0,
+            "Longitudinal Cracking": 50.0,
+            "Transverse Cracking": 5.0,
+            "Edge Cracking": 10.0,
+            "Potholes": 135.0,
+            "Edge Breaking": 10.0
+          },
+          "pct_distress_of_surveyed": 17.5,
+          "pct_distress_of_classified": 17.5
+        },
+        {
+          "km": 1,
+          "from_m": 1000.0,
+          "to_m": 1149.76,
+          "surveyed_m": 149.76,
+          "not_covered_m": 0.0,
+          "classified_m": 149.76,
+          "distress_m": 29.76,
+          "normal_m": 120.0,
+          "unknown_m": 0.0,
+          "pending_m": 0.0,
+          "not_sent_m": 0.0,
+          "labels_m": {
+            "Bleeding": 15.0,
+            "Hungry Surface": 5.0,
+            "Longitudinal Cracking": 5.0,
+            "Potholes": 24.76,
+            "Edge Breaking": 9.76
+          },
+          "pct_distress_of_surveyed": 19.872,
+          "pct_distress_of_classified": 19.872
+        }
+      ]
+    },
+    {
+      "session_id": "20261026T114907Z_SM-G991B-F0D1_293d",
+      "road_name": "test 2",
+      "road_id": "TST-2",
+      "local_date": "2026-10-26",
+      "state": "stored",
+      "segments": 55,
+      "route_m": 273.05,
+      "surveyed_m": 273.05,
+      "classified_m": 273.05,
+      "distress_m": 103.05,
+      "not_covered_m": 0.0,
+      "pct_distress_of_surveyed": 37.74,
+      "per_km": [
+        {
+          "km": 0,
+          "from_m": 0.0,
+          "to_m": 273.05,
+          "surveyed_m": 273.05,
+          "not_covered_m": 0.0,
+          "classified_m": 273.05,
+          "distress_m": 103.05,
+          "normal_m": 170.0,
+          "unknown_m": 0.0,
+          "pending_m": 0.0,
+          "not_sent_m": 0.0,
+          "labels_m": {
+            "Bleeding": 40.0,
+            "Hungry Surface": 15.0,
+            "Alligator Cracking": 3.05,
+            "Longitudinal Cracking": 8.05,
+            "Potholes": 85.0,
+            "Edge Breaking": 45.0
+          },
+          "pct_distress_of_surveyed": 37.74,
+          "pct_distress_of_classified": 37.74
+        }
+      ]
+    },
+    {
+      "session_id": "20261027T050257Z_SM-G991B-F0D1_d47c",
+      "road_name": "test 2",
+      "road_id": "TST-2",
+      "local_date": "2026-10-27",
+      "state": "stored",
+      "segments": 528,
+      "route_m": 2637.5,
+      "surveyed_m": 2637.5,
+      "classified_m": 2637.5,
+      "distress_m": 507.5,
+      "not_covered_m": 0.0,
+      "pct_distress_of_surveyed": 19.242,
+      "per_km": [
+        {
+          "km": 0,
+          "from_m": 0.0,
+          "to_m": 1000.0,
+          "surveyed_m": 1000.0,
+          "not_covered_m": 0.0,
+          "classified_m": 1000.0,
+          "distress_m": 90.0,
+          "normal_m": 910.0,
+          "unknown_m": 0.0,
+          "pending_m": 0.0,
+          "not_sent_m": 0.0,
+          "labels_m": {
+            "Bleeding": 60.0,
+            "Streaking": 15.0,
+            "Alligator Cracking": 10.0,
+            "Longitudinal Cracking": 20.0,
+            "Potholes": 65.0,
+            "Edge Breaking": 10.0
+          },
+          "pct_distress_of_surveyed": 9.0,
+          "pct_distress_of_classified": 9.0
+        },
+        {
+          "km": 1,
+          "from_m": 1000.0,
+          "to_m": 2000.0,
+          "surveyed_m": 1000.0,
+          "not_covered_m": 0.0,
+          "classified_m": 1000.0,
+          "distress_m": 285.0,
+          "normal_m": 715.0,
+          "unknown_m": 0.0,
+          "pending_m": 0.0,
+          "not_sent_m": 0.0,
+          "labels_m": {
+            "Bleeding": 75.0,
+            "Streaking": 10.0,
+            "Hungry Surface": 10.0,
+            "Longitudinal Cracking": 190.0,
+            "Transverse Cracking": 10.0,
+            "Edge Cracking": 5.0,
+            "Potholes": 245.0,
+            "Edge Breaking": 15.0
+          },
+          "pct_distress_of_surveyed": 28.5,
+          "pct_distress_of_classified": 28.5
+        },
+        {
+          "km": 2,
+          "from_m": 2000.0,
+          "to_m": 2637.5,
+          "surveyed_m": 637.5,
+          "not_covered_m": 0.0,
+          "classified_m": 637.5,
+          "distress_m": 132.5,
+          "normal_m": 505.0,
+          "unknown_m": 0.0,
+          "pending_m": 0.0,
+          "not_sent_m": 0.0,
+          "labels_m": {
+            "Bleeding": 40.0,
+            "Hungry Surface": 5.0,
+            "Alligator Cracking": 10.0,
+            "Longitudinal Cracking": 87.5,
+            "Transverse Cracking": 20.0,
+            "Edge Cracking": 5.0,
+            "Potholes": 97.5
+          },
+          "pct_distress_of_surveyed": 20.784,
+          "pct_distress_of_classified": 20.784
+        }
+      ]
+    }
+  ],
+  "diagnostics": {
+    "gate_counterfactual": {
+      "send": 739,
+      "skip": 70,
+      "audit": 4
+    },
+    "distress_with_none_severity": 7,
+    "multi_label_distress": 153,
+    "sum_distress_label_metres": 1585.62
+  }
+}

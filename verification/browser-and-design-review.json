@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-30",
+  "scope": "Drive-video-only dashboard with main GIS card motion, sliding Video/Survey navigation, and anchored control cards",
+  "sample_default": {
+    "video_segments": 131,
+    "matching_road_m": 652.3,
+    "awaiting_review": 111,
+    "drive_routes": 3,
+    "total_route_m": 4060.31
+  },
+  "automated_tests": {
+    "passed": 66,
+    "failed": 0,
+    "skipped": 0
+  },
+  "live_http_checks": {
+    "passed": 19,
+    "failed": 0
+  },
+  "browser_review": {
+    "desktop_viewports": [
+      [
+        1280,
+        720
+      ],
+      [
+        1440,
+        900
+      ]
+    ],
+    "phone_viewports": [
+      [
+        375,
+        812
+      ]
+    ],
+    "phone_document_width": 375,
+    "current_console_errors": [],
+    "checked": [
+      "Default Potholes with no citizen controls",
+      "Only Video and Survey navigation",
+      "Drive inspection and frame stepping",
+      "Expanded evidence, local time, uncertainty and confidence",
+      "Survey analysis and per-km report",
+      "Potholes + High severity yields one 5m segment",
+      "Reset restores Potholes",
+      "Coverage layer and light/dark themes",
+      "Readable two-column phone metrics",
+      "Expanded evidence above dashboard controls",
+      "Short-phone metrics hide during playback and restore on close",
+      "Survey is nonmodal, aligned 12px below its navigation trigger; navigation stays interactive",
+      "Navigation slider measured moving between Video and Survey over 400ms",
+      "Settings, Drive, Filters and Export open anchored cards and close previous cards",
+      "Survey fits 375px phone viewport with internal scrolling",
+      "Report remains modal and fits phone viewport",
+      "Escape closes report and returns keyboard focus to SurveyNav after native dialog close",
+      "Expanded desktop evidence is 480px wide and stays within map bounds",
+      "Phone and desktop evidence and replay still usable after motion update"
+    ],
+    "map_fallback": "OpenFreeMap rendered during current motion review. Prior review exercised OpenStreetMap fallback.",
+    "previous_drive_only_checks": {
+      "short_phone_clear_map_height_px": 173,
+      "short_phone_card_strip_gap_px": 11
+    },
+    "current_console_warnings": [
+      "External basemap reports a missing wood-pattern texture; road rendering and interaction remain usable."
+    ]
+  },
+  "design_review": "Independent design review passed 12 fresh desktop/phone captures; no clipping or visual blocker found.",
+  "limits": [
+    "Production FastAPI host and production-volume latency not exercised",
+    "Replay uses selected video frames, not an original MP4 endpoint"
+  ],
+  "external_actions": "Repository publication authorized by the project owner. Production deployment is separate.",
+  "motion": {
+    "navigation_ms": 400,
+    "survey_filters_about_ms": 300,
+    "utility_cards_ms": 250,
+    "evidence_entrance_width_ms": 550,
+    "reduced_motion": "Transitions and close delays removed"
+  },
+  "repository_verification": {
+    "automated_tests": 66,
+    "ui_tests": 36,
+    "python_override_tests": 5,
+    "http_checks": 19,
+    "sample_checks": 58,
+    "sample_manifest_files": 1664,
+    "browser_check": "All four detector scores shown in advanced details, with model/counterfactual gate context preserved.",
+    "screenshot": "webgis/screenshots/repository-detector-details.jpg"
+  }
+}

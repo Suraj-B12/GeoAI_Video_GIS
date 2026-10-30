@@ -1,0 +1,126 @@
+{
+  "base": "http://127.0.0.1:8771",
+  "passed": 19,
+  "total": 19,
+  "checks": [
+    {
+      "name": "metadata_schema",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "query ",
+      "passed": true,
+      "detail": {
+        "expected": 813,
+        "matched": 813,
+        "summary": 813
+      }
+    },
+    {
+      "name": "query label=Potholes",
+      "passed": true,
+      "detail": {
+        "expected": 131,
+        "matched": 131,
+        "summary": 131
+      }
+    },
+    {
+      "name": "query severity=Medium,High&vlm_class=distress",
+      "passed": true,
+      "detail": {
+        "expected": 75,
+        "matched": 75,
+        "summary": 75
+      }
+    },
+    {
+      "name": "query min_confidence=0.8&vlm_class=distress",
+      "passed": true,
+      "detail": {
+        "expected": 47,
+        "matched": 47,
+        "summary": 47
+      }
+    },
+    {
+      "name": "query needs_review=true",
+      "passed": true,
+      "detail": {
+        "expected": 389,
+        "matched": 389,
+        "summary": 389
+      }
+    },
+    {
+      "name": "three_drives",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "per_km 20261026T114332Z_SM-G991B-F0D1_f428",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "per_km 20261026T114907Z_SM-G991B-F0D1_293d",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "per_km 20261027T050257Z_SM-G991B-F0D1_d47c",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "thumb_url",
+      "passed": true,
+      "detail": {
+        "bytes": 15692
+      }
+    },
+    {
+      "name": "preview_url",
+      "passed": true,
+      "detail": {
+        "bytes": 90374
+      }
+    },
+    {
+      "name": "csv_bom_unicode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "invalid_label_400",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "static_mount",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "video_survey_navigation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no_citizen_interface",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no_citizen_endpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "same_origin_default",
+      "passed": true,
+      "detail": null
+    }
+  ]
+}

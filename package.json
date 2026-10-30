@@ -1,0 +1,13 @@
+{
+  "name": "geoai-video-gis-verification",
+  "private": true,
+  "scripts": {
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "jsdom": "26.1.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

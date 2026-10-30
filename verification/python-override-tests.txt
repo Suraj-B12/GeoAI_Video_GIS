@@ -1,0 +1,13 @@
+✔ the Python oracle resolves platform launchers and explicit paths without silently ignoring a bad override (1.355375ms)
+✔ real sample acceptance counts are reproduced by final-field client filters (6.915125ms)
+✔ 1,440 shared-filter combinations match the independently supplied Python API oracle (5752.325083ms)
+✔ sample kilometre coverage partitions road length without adding overlapping labels (0.984292ms)
+✔ filters honor expert final fields, distinguish missing confidence from zero, and isolate layer-only scope (0.226583ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5820.086458
