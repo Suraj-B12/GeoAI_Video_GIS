@@ -131,5 +131,16 @@
       "fullmap-player-short-mobile.jpg",
       "fullmap-survey-desktop.jpg"
     ]
+  },
+  "survey_anchor_revision": {
+    "date": "2026-10-30",
+    "supersedes": "Earlier Survey navigation-trigger positioning notes and screenshot",
+    "anchor": "driveControl, left-aligned with 12 px gap",
+    "desktop_card_width_px": 380,
+    "mobile_checked": "375x667, card left12 top356 bottom655, no horizontal overflow",
+    "distance_font": "Rostex Outline, matching GEO",
+    "automated_tests": "69/69",
+    "design_review": "Approved",
+    "screenshot": "webgis/screenshots/survey-left-update.jpg"
   }
 }

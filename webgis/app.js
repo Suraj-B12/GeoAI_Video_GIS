@@ -22,10 +22,10 @@
   const flowCards=new Map();
   const motionPreference=window.matchMedia('(prefers-reduced-motion: reduce)');
   let evidenceCloseTimer,evidenceEntryTimer,evidenceExpandTimer,evidenceClosing=false;
-  function registerFlow(id,triggerId,{hostId,align='start',above=false,modal=false,returnId}={}){
+  function registerFlow(id,triggerId,{anchorId,hostId,align='start',above=false,modal=false,returnId}={}){
     const panel=$(id),trigger=$(triggerId),host=hostId?$(hostId):null;
     if(!panel||!trigger)return;
-    const entry={panel,trigger,host,align,above,modal,returnTrigger:$(returnId)||trigger,isOpen:false,closing:false,timer:null};
+    const entry={panel,trigger,anchor:$(anchorId)||trigger,host,align,above,modal,returnTrigger:$(returnId)||trigger,isOpen:false,closing:false,timer:null};
     flowCards.set(id,entry);
     panel.classList.add('flow-card');panel.classList.toggle('flow-above',above);panel.inert=true;
     trigger.setAttribute('aria-expanded','false');
@@ -41,7 +41,7 @@
   }
   function positionFlow(entry){
     if(entry.modal)return;
-    const {panel,trigger,align,above}=entry,anchor=trigger.getBoundingClientRect(),margin=12;
+    const {panel,align,above}=entry,anchor=entry.anchor.getBoundingClientRect(),margin=12;
     const width=panel.offsetWidth||Math.min(640,innerWidth-margin*2);
     const left=Math.max(margin,Math.min(innerWidth-width-margin,align==='end'?anchor.right-width:anchor.left));
     const available=above?anchor.top-margin*2:innerHeight-anchor.bottom-margin*2;
@@ -445,7 +445,8 @@
   function renderDriveMenu(){
     const select=$('driveSelect');if(!select)return;
     const total=state.sessions.reduce((sum,drive)=>sum+(Number(drive.route_m)||0),0);
-    $('totalDistance').textContent=D.formatDistance(total)+' surveyed routes';
+    const [distance,unit='']=D.formatDistance(total).split(' ');
+    $('totalDistance').innerHTML=`<span class="distance-reading"><span class="distance-value">${esc(distance)}</span> <span class="distance-unit">${esc(unit)}</span></span> <span class="distance-label">surveyed routes</span>`;
     select.innerHTML='<option value="">All '+state.sessions.length+' drives</option>'+state.sessions.map(s=>`<option value="${esc(s.session_id)}">${esc(s.road_name||s.road_id||'Drive')} · ${esc(s.local_date)} · ${D.formatDistance(s.route_m)}</option>`).join('');
     select.value=state.inspectSession;select.disabled=!state.sessions.length;
     $('sessions').querySelectorAll('[data-session]').forEach(button=>{const active=button.dataset.session===state.inspectSession;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));});
@@ -525,7 +526,7 @@
   $('driveFocus')?.addEventListener('click',()=>{closeFlow('drivePanel');const s=state.sessions.find(s=>s.session_id===state.inspectSession);map?.fitBBox(s?.bbox||state.meta?.video?.bbox);});
   $('driveReplay')?.addEventListener('click',openReplay);
   $('closeStrip')?.addEventListener('click',()=>{pause();state.stripOpen=false;renderStrip();positionCard();});
-  registerFlow('overviewDialog','surveyNav');registerFlow('filterDialog','filterButton',{align:'end'});registerFlow('aboutDialog','aboutButton');
+  registerFlow('overviewDialog','surveyNav',{anchorId:'driveControl'});registerFlow('filterDialog','filterButton',{align:'end'});registerFlow('aboutDialog','aboutButton');
   registerFlow('settingsPanel','settingsButton',{hostId:'settingsControl',align:'end'});registerFlow('exportPanel','exportButton',{hostId:'exportControl',align:'end'});
   registerFlow('drivePanel','driveToggle');registerFlow('legend','legendButton',{hostId:'legendControl',align:'end',above:true});
   registerFlow('insightsDialog','insightsButton',{modal:true,returnId:'surveyNav'});

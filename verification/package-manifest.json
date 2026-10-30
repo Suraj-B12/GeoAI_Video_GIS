@@ -62,12 +62,12 @@
   {
     "path": "verification/automated-tests.txt",
     "bytes": 7505,
-    "sha256": "d56beb8c9c64097eec919b4fdc5214b6684ffac8a7a08d7e6cfde275fe4739fe"
+    "sha256": "da3bb265669cee716bc50f7eb3f903b786d14dabfe9cdf253a9294a3b919aeb1"
   },
   {
     "path": "verification/browser-and-design-review.json",
-    "bytes": 4654,
-    "sha256": "861ad76dc7a036be6353676c80a0a86e7f190494c7d110d3a5c3b0a67444e817"
+    "bytes": 5163,
+    "sha256": "448810801cf5008ea512e855999794d6d322af865ff3c767b7132696096ca113"
   },
   {
     "path": "verification/python-override-tests.txt",
@@ -101,18 +101,18 @@
   },
   {
     "path": "webgis/README.md",
-    "bytes": 10323,
-    "sha256": "1a1974fb0af1e332067b887c4c6d9d75f7bc405d5cf438b1df32a20b0cf630bd"
+    "bytes": 10342,
+    "sha256": "c59cf0585985798320f2f66f24beb6d4526d01ef44236e7f644d89d82c550b6e"
   },
   {
     "path": "webgis/TEST-LOG.md",
-    "bytes": 9620,
-    "sha256": "fd05cf515ca6726d92c457fea591497db416b31b0488c122c5103083155a429f"
+    "bytes": 9991,
+    "sha256": "2e27684b1d6f7d09ca15fbc5283ced4871e8d5f3e3856183576e9d7e41e0044b"
   },
   {
     "path": "webgis/app.js",
-    "bytes": 55113,
-    "sha256": "cb5765c912c8a7f3493dd8bc24200e6efc990c4f073263cb5cb9b0a754d6fbbc"
+    "bytes": 55386,
+    "sha256": "ae6bcfcce8483e3f84b91ae981e0da92fae3338355aa634b3045d31af99ee89f"
   },
   {
     "path": "webgis/basemaps.js",
@@ -125,6 +125,11 @@
     "sha256": "7d51fbdcdf5e3d457fc2c389955fd98bed33c7806134afceb81f7fc97d993bf1"
   },
   {
+    "path": "webgis/data.js",
+    "bytes": 15703,
+    "sha256": "9d2fb27a0f0d4885bf4ceb9541c5982a97994036b9f670a2da3b30c6adbbe2b0"
+  },
+  {
     "path": "webgis/data/README.md",
     "bytes": 1416,
     "sha256": "0e6d975fa40cdd497028ac65948d5ba0876b6e60794bdd27ea816187a1557c96"
@@ -133,11 +138,6 @@
     "path": "webgis/data/bbmp-198-wards.geojson",
     "bytes": 1881095,
     "sha256": "06263e1a1e72fc58844a635c0b95e490962321e8489b476f2379771ce5128633"
-  },
-  {
-    "path": "webgis/data.js",
-    "bytes": 15703,
-    "sha256": "9d2fb27a0f0d4885bf4ceb9541c5982a97994036b9f670a2da3b30c6adbbe2b0"
   },
   {
     "path": "webgis/favicon.svg",
@@ -305,9 +305,14 @@
     "sha256": "aa8df1d6a26ed9059d4339d0adb5be1505ff6483284a5da801bcb914ceb9f690"
   },
   {
+    "path": "webgis/screenshots/survey-left-update.jpg",
+    "bytes": 113891,
+    "sha256": "475c5a12e04c4df95fb3213bec71fb1b849536a3f68f23d3161fbf1c994e2327"
+  },
+  {
     "path": "webgis/styles.css",
-    "bytes": 98615,
-    "sha256": "0855ea8176a5093be719c591863eb404f31cd3e083280f1f8877b710e7beabe1"
+    "bytes": 100314,
+    "sha256": "7357b7b78f9d16aebf44ce01a444d0cc736a9659176e41da49de9b5a0cec45c3"
   },
   {
     "path": "webgis/vendor/MarkerCluster.Default.css",

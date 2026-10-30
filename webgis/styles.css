@@ -144,7 +144,7 @@ body.video-dashboard.dark{background:#191b1e;--glass:rgba(35,35,38,.99)}.video-d
 .video-dashboard #overviewDialog.flow-card,
 .video-dashboard #filterDialog.flow-card,
 .video-dashboard #aboutDialog.flow-card{--flow-duration:300ms;--flow-shift:-8px;transition:opacity .3s ease,transform .3s ease;height:auto;z-index:1700}
-.video-dashboard #overviewDialog.flow-card{width:min(760px,calc(100vw - 32px));border-radius:23px}
+.video-dashboard #overviewDialog.flow-card{width:min(380px,calc(100vw - 24px));border-radius:23px}
 .video-dashboard #overviewDialog .dialog-heading{padding:21px 25px}.video-dashboard #overviewDialog .dialog-heading h2{font-size:25px}.video-dashboard #overviewDialog .sidebar{padding-top:20px}.video-dashboard #overviewDialog .panel-heading{padding:0 25px 14px}.video-dashboard #overviewDialog .sidebar-scroll{gap:6px}.video-dashboard #overviewDialog .sessions{padding:0 13px 22px 25px;gap:10px}.video-dashboard #overviewDialog .session-card{padding:15px}.video-dashboard #overviewDialog .session-title{font-size:14px}.video-dashboard #overviewDialog .session-date{font-size:11px;line-height:1.45;margin:8px 0 12px}.video-dashboard #overviewDialog .session-meta{font-size:11px}.video-dashboard #overviewDialog .condition-summary{padding:0 25px 22px 10px}.video-dashboard #overviewDialog .condition-summary h3{font-size:15px}.video-dashboard #overviewDialog .label-row{margin:16px 0}.video-dashboard #overviewDialog .label-row-head{font-size:11px}.video-dashboard #overviewDialog .overview-footer{padding:13px 25px}.video-dashboard #overviewDialog .overview-footer .button{min-height:38px;font-size:11px}
 .video-dashboard #filterDialog.flow-card{width:min(480px,calc(100vw - 24px));border-radius:23px}.video-dashboard #filterDialog .dialog-heading{padding:20px 23px}.video-dashboard #filterDialog .dialog-heading h2{font-size:24px}.video-dashboard #filterDialog .filter-body{padding:20px 23px}.video-dashboard #filterDialog .label-filters{gap:16px 12px}.video-dashboard #filterDialog .filter-body .label-option{font-size:11px!important}.video-dashboard #aboutDialog.flow-card{width:min(520px,calc(100vw - 24px));border-radius:24px}
 .video-dashboard .toolbar #settingsPanel.flow-card{width:238px;padding:16px 19px;border-radius:20px;--flow-shift:-6px;z-index:1500}.video-dashboard .dashboard-actions #exportPanel.flow-card{width:230px;padding:6px;border-radius:16px;z-index:1500}.video-dashboard #exportPanel button{min-height:42px;border-radius:10px}.video-dashboard #legend.flow-card{width:270px;padding:17px;border-radius:20px;--flow-shift:6px;transform-origin:var(--flow-origin-x,50%) 100%}
@@ -353,4 +353,26 @@ body.video-dashboard,body.video-dashboard.has-strip{--dashboard-map-top:0px;--fl
 }
 @media(min-width:821px) and (max-width:1100px){
  .video-dashboard .strip-panel{width:calc(100vw - 160px)}
+}
+/* Survey unfolds beneath the route total as a compact left-side card. */
+.video-dashboard #overviewDialog .dialog-heading{padding:18px 20px}
+.video-dashboard #overviewDialog .dialog-heading h2{font-size:23px}
+.video-dashboard #overviewDialog .sidebar{padding-top:18px}
+.video-dashboard #overviewDialog .panel-heading{padding:0 20px 12px}
+.video-dashboard #overviewDialog .sidebar-scroll{display:block}
+.video-dashboard #overviewDialog .sessions{padding:0 18px 18px;gap:9px}
+.video-dashboard #overviewDialog .session-card{padding:13px}
+.video-dashboard #overviewDialog .condition-summary{padding:18px 20px;border-top:1px solid var(--border)}
+.video-dashboard:has(#overviewDialog[open]) #driveControl{visibility:visible;pointer-events:auto}
+.video-dashboard #driveToggle{min-height:56px;padding-top:8px;padding-bottom:8px}
+.video-dashboard #driveToggle>strong{white-space:nowrap}
+.video-dashboard #totalDistance .distance-reading{display:block;line-height:1.2}
+.video-dashboard #totalDistance .distance-label{display:block;font-size:10px;font-weight:600;line-height:1.2;margin-top:2px}
+.video-dashboard #totalDistance .distance-unit{font-size:11px;font-weight:600}
+.video-dashboard #totalDistance .distance-value{font-family:'Rostex Outline',Urbanist,sans-serif;font-size:20px;font-weight:400;letter-spacing:.02em;line-height:1;-webkit-text-stroke:.5px currentColor;paint-order:stroke fill;vertical-align:baseline}
+@media(max-width:820px){
+ .video-dashboard #overviewDialog.flow-card{width:min(380px,calc(100vw - 24px))}
+ .video-dashboard #driveToggle{min-height:52px}
+ .video-dashboard #totalDistance .distance-value{font-size:18px}
+ .video-dashboard #totalDistance .distance-label{font-size:9px}
 }

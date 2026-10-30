@@ -28,7 +28,7 @@ The browser calls the existing read-only `/gis/*` API. No additional backend, da
 
 The map fills the entire viewport. GEOAI navigation floats at the upper left; the title, actions and current-filter metrics sit in compact cards at the upper right on desktop. Drive inspection and map settings remain separate floating controls. On phones, the metric card uses two columns with map space visible beside it. Replay temporarily hides the phone metrics and filter chips to keep the route visible, then restores them when closed.
 
-- **Video** returns to the map, evidence and route player. **Survey** opens the analysis card directly beneath its navigation pill. These are the only primary navigation items; the active highlight slides between them.
+- **Video** returns to the map, evidence and route player. **Survey** opens the analysis card on the left, directly beneath the surveyed-roads total. These are the only primary navigation items; the active highlight slides between them.
 - **Filters** and **Export** are separate dashboard actions. They open cards beside their controls. The GEOAI logo opens About the data; the map gear opens layers and light/dark presentation. The legend opens upward from its map button.
 - The floating metric card describes **current filters**: matching road length, distress within that selection, segments awaiting expert review and classified length. They do not claim to describe the whole route when a distress filter is active.
 - Select the **surveyed routes** distance capsule to open **Inspect a drive**. Choosing a drive focuses it without hiding the other route tracks or silently changing the observation filters. Use the explicit session filter to restrict observations and statistics to one drive.
@@ -91,7 +91,7 @@ These captures show the current full-map layout.
 
 ![Full-map video survey workspace](screenshots/fullmap-desktop.jpg)
 
-![Survey card flowing from the navigation](screenshots/fullmap-survey-desktop.jpg)
+![Survey card beneath the surveyed-roads total](screenshots/survey-left-update.jpg)
 
 ![Phone map and floating controls](screenshots/fullmap-mobile.jpg)
 

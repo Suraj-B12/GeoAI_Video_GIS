@@ -24,7 +24,7 @@ Saved outputs accompany the package in `verification/`. These results establish 
 | Full survey reference totals | Passed | With label restriction removed: 813 segments, 4,060.31 m surveyed, 20.08% distressed, 389 awaiting review. |
 | Reference filters | Passed | Potholes 131; Medium+High distress 75; high-confidence distress 47; needs-review 389. Non-pothole reference cases remove the default label restriction. |
 | Citizen/walking layer | Intentionally excluded | No runtime citizen request, layer toggle, pending-review control, citizen metric or citizen export. This follows the latest requested scope. |
-| Anchored controls and navigation | Passed | Survey, About and Filters open below their triggers; Settings, Export, Drive and Legend use the same card lifecycle. The detailed report remains modal. Sliding active navigation, keyboard dismissal/focus return, mutual exclusion and reduced-motion closing are covered. |
+| Anchored controls and navigation | Passed | Survey opens below the surveyed-roads total on the left; About and Filters open below their triggers; Settings, Export, Drive and Legend use the same card lifecycle. The detailed report remains modal. Sliding active navigation, keyboard dismissal/focus return, mutual exclusion and reduced-motion closing are covered. |
 | Evidence card | Passed functional checks | Resized image, final labels, original correction, confidence/review state, local time and GNSS uncertainty. Sub-second LAN timing is not measured here. |
 | Missing/unknown/corrected states | Passed fixtures | Isolated synthetic data; original sample unchanged. Missing frames never imply Normal. |
 | Virtualized strip | Passed | Bounded visible nodes, chronological segment order, thumbnail/map synchronization and keyboard stepping. Replay follows matching frames when filters are active. |
@@ -72,3 +72,5 @@ The repository handoff and original sample ZIP match the sources used for develo
 ## Receiving-environment checks
 
 Run the receiving team's API suite and smoke tests against its real FastAPI/VLM host. Confirm data, internet access, large-volume rendering and LAN preview latency. Deployment and acceptance on the real VLM server remain separate receiving-environment checks.
+
+Latest Survey placement check: the card is left-aligned beneath the road total with a 12 px gap, including at 375×667. The numeric distance uses the same Rostex Outline family as GEO; units and the secondary label remain in Urbanist. No horizontal overflow was observed. All 69 automated tests passed after this update.
