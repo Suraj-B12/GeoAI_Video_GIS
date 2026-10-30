@@ -1,6 +1,6 @@
 {
   "date": "2026-10-30",
-  "scope": "Drive-video-only dashboard with main GIS card motion, sliding Video/Survey navigation, and anchored control cards",
+  "scope": "Drive-video-only full-screen map with floating navigation, metrics and cards",
   "sample_default": {
     "video_segments": 131,
     "matching_road_m": 652.3,
@@ -9,7 +9,7 @@
     "total_route_m": 4060.31
   },
   "automated_tests": {
-    "passed": 66,
+    "passed": 69,
     "failed": 0,
     "skipped": 0
   },
@@ -20,18 +20,26 @@
   "browser_review": {
     "desktop_viewports": [
       [
-        1280,
-        720
-      ],
-      [
         1440,
         900
+      ],
+      [
+        900,
+        850
       ]
     ],
     "phone_viewports": [
       [
         375,
         812
+      ],
+      [
+        375,
+        667
+      ],
+      [
+        375,
+        600
       ]
     ],
     "phone_document_width": 375,
@@ -55,7 +63,13 @@
       "Report remains modal and fits phone viewport",
       "Escape closes report and returns keyboard focus to SurveyNav after native dialog close",
       "Expanded desktop evidence is 480px wide and stays within map bounds",
-      "Phone and desktop evidence and replay still usable after motion update"
+      "Phone and desktop evidence and replay still usable after motion update",
+      "Map bounds equal complete viewport; no inset frame or opaque dashboard background",
+      "Floating metric cards and navbar leave route visible",
+      "Measured route fitting avoids floating controls and footer pills",
+      "Compact and expanded evidence avoid floating controls and selected vehicle",
+      "Narrow desktop and phone players leave Fit and zoom clickable",
+      "Phone replay hides metrics; below640px height also hides title; closing restores controls"
     ],
     "map_fallback": "OpenFreeMap rendered during current motion review. Prior review exercised OpenStreetMap fallback.",
     "previous_drive_only_checks": {
@@ -80,13 +94,42 @@
     "reduced_motion": "Transitions and close delays removed"
   },
   "repository_verification": {
-    "automated_tests": 66,
-    "ui_tests": 36,
+    "automated_tests": 69,
+    "ui_tests": 37,
     "python_override_tests": 5,
     "http_checks": 19,
     "sample_checks": 58,
     "sample_manifest_files": 1664,
     "browser_check": "All four detector scores shown in advanced details, with model/counterfactual gate context preserved.",
     "screenshot": "webgis/screenshots/repository-detector-details.jpg"
+  },
+  "full_map_revision": {
+    "tests": 69,
+    "map_bounds_desktop": [
+      0,
+      0,
+      1440,
+      900
+    ],
+    "map_bounds_short_phone": [
+      0,
+      0,
+      375,
+      667
+    ],
+    "short_phone_document_width": 375,
+    "phone_control_hit_checks": "Fit, Settings, Video/Survey and both zoom buttons unobstructed at375\u00d7667 and375\u00d7600",
+    "screenshots": [
+      "fullmap-dark-desktop.jpg",
+      "fullmap-desktop.jpg",
+      "fullmap-evidence-desktop.jpg",
+      "fullmap-evidence-mobile.jpg",
+      "fullmap-mobile.jpg",
+      "fullmap-player-compact-mobile.jpg",
+      "fullmap-player-desktop.jpg",
+      "fullmap-player-mobile.jpg",
+      "fullmap-player-short-mobile.jpg",
+      "fullmap-survey-desktop.jpg"
+    ]
   }
 }

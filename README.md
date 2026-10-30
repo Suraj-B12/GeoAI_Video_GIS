@@ -4,7 +4,7 @@ A separate, read-only dashboard for drive-video road surveys. The application li
 
 The implemented scope follows the project owner's later instructions: **drive video only**, Potholes selected initially, and only **Video** and **Survey** in the primary navigation. Citizen/walking observations are excluded. This overrides the two-layer requirement in the original, unchanged [`GIS_VIDEO_HANDOFF.md`](GIS_VIDEO_HANDOFF.md).
 
-![Survey analysis anchored below navigation](webgis/screenshots/motion-survey-desktop.jpg)
+![Full-screen map with floating survey controls](webgis/screenshots/fullmap-desktop.jpg)
 
 ## Run locally
 
@@ -28,7 +28,7 @@ Open **http://127.0.0.1:8765/gis/app/**. On Windows, use `python` instead of `py
 - Drive routes, metadata-driven point/footprint markers, clusters, condition coverage, severity heatmap and historical BBMP ward overlay.
 - Filter-aware metrics, date/label/severity/review/session/status filters, video CSV export and per-kilometre reports.
 - Evidence with final expert/model labels, confidence, uncertainty and local time; virtualized frame strip and synchronized route replay.
-- Main GIS typography and motion: sliding navigation, anchored Survey and utility cards, light/dark presentation, phone layouts and reduced-motion support.
+- Full-screen map with floating controls, plus main GIS typography and motion: sliding navigation, anchored Survey and utility cards, light/dark presentation, phone layouts and reduced-motion support.
 - Loading/error recovery, missing-image states and tests for future pending, skipped, uncovered and expert-corrected segments.
 
 See [`webgis/README.md`](webgis/README.md) for controls, screenshots, interpretation, attribution and limitations. The sample's default Potholes view contains **131 segments**, **652.3 m** of matching road and **111** results awaiting expert review; all three drive tracks remain available.
@@ -49,7 +49,7 @@ With the mock running in another terminal:
 python3 verification/api-integration.py http://127.0.0.1:8765
 ```
 
-The delivered dashboard passed **66 automated tests**, **19 live HTTP checks**, and **58 sample checks**, including hashes for all **1,664** manifest-listed files. Desktop and phone interaction/design reviews are recorded in [`webgis/TEST-LOG.md`](webgis/TEST-LOG.md) and [`verification/`](verification/).
+The delivered dashboard passed **69 automated tests**, **19 live HTTP checks**, and **58 sample checks**, including hashes for all **1,664** manifest-listed files. Desktop and phone interaction/design reviews are recorded in [`webgis/TEST-LOG.md`](webgis/TEST-LOG.md) and [`verification/`](verification/).
 
 ## Integrate with the VLM server
 

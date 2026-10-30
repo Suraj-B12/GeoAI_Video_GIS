@@ -1,10 +1,10 @@
 # Verification — 30 October 2026
 
-This log covers the separate **drive-video-only dashboard**, including default Potholes, Video/Survey navigation, persistent filter-aware metrics, no citizen/walking layer, and the latest anchored-card and sliding-navigation interactions. The supplied sample remains unchanged.
+This log covers the separate **drive-video-only map workspace**, including default Potholes, Video/Survey navigation, filter-aware metrics, no citizen/walking layer, anchored cards and sliding navigation. The latest layout makes the map fill the viewport and moves controls into compact floating groups. The supplied sample remains unchanged.
 
 ## Automated checks
 
-- JavaScript data, UI, map and basemap suites: **66/66 passed**.
+- Final JavaScript data, UI, map and basemap suites after the full-map revision: **69/69 passed**, including **37 UI tests**.
 - The suite includes **1,440 filter combinations** compared with the supplied Python API's filtering implementation.
 - Live HTTP API checks against the supplied mock: **19/19 passed**.
 - Sample consistency checks: **58/58 passed**, including SHA-256 checks for all **1,664 manifest-listed files**.
@@ -34,19 +34,23 @@ Saved outputs accompany the package in `verification/`. These results establish 
 | Ward overlay | Passed functional checks | Historical 198-ward file, names and loaded-video counts/distressed length. Historical status and centre-based assignment documented. |
 | API failure/recovery | Passed fixtures | Clear notice, disabled stale actions, 30-second retry and stale-response guards. |
 | Credentials/local paths | Passed authored-assets scan | No browser secrets or absolute workstation paths. Original media only via explicit link. |
-| Responsive visual confirmation | Passed at reviewed sizes | Desktop 855×853 and 1440×900; phones 375×812 and 375×667. Default dashboard, two-row metrics, player, expanded evidence, filters and Survey analysis reviewed. Short-phone width remains 375 px; the player leaves 173 px of clear map above the card and an 11 px card-to-strip gap. Metrics restore on player close. |
+| Current full-map visual confirmation | Passed at reviewed sizes | Desktops 1440×900 and 900×850; phones 375×812, 375×667 and 375×600. Reviewed default map, Survey, replay, expanded evidence and dark presentation. The map fills the viewport, navigation remains reachable with Legend open, and browser hit-testing confirms Fit and zoom remain reachable during replay. Phone replay hides metrics to preserve route space. Earlier layout measurements are recorded separately below. |
 
-## Design review
+## Current full-map design review
 
-The corrected dashboard has only **Video** and **Survey** in the primary navigation. Filters and Export are separate actions. Persistent metrics state that they describe the current drive-video filters; total route distance remains a separate map context control. Main GEOAI branding, typography and pale OpenFreeMap styling are retained in a restrained dashboard layout.
+The map now extends to every viewport edge. Only **Video** and **Survey** remain in primary navigation; Filters and Export are separate actions. Desktop navigation sits at the upper left, with compact title/actions and two-by-two metric cards at the upper right. Drive inspection and Settings float independently. Main GEOAI branding, typography, map styling and anchored-card motion are retained.
 
-Desktop default and player screenshots were reviewed for clipping and information hierarchy. Review identified an expanded evidence card squeezed above the frame strip; expanded inspection now temporarily hides the player and uses the available map height. Phone metrics were changed from four tiny columns to a readable two-by-two rail. Expanded phone evidence may cover the metrics while open and restores them when closed.
+Current screenshots were reviewed independently at 1440×900 and 900×850 desktop sizes, and 375×812, 375×667 and 375×600 phone sizes. They cover the map, Survey card, replay, expanded evidence and dark presentation. The map bounds were measured as the complete viewport. No clipped actions or horizontal overflow were found in these reviewed states. On phones, the narrow metric card keeps the main values and labels readable; longer supporting notes use ellipses. Replay hides metrics and filter chips, leaving a clear route area above the compact evidence card and player. Closing replay restores the metrics. A legacy bottom offset was removed so filter chips keep their natural compact height.
 
-The final drive-only screenshots were reviewed independently at desktop and 375×812 phone sizes. The expanded evidence sheet shows its image, labels, confidence, review state and metadata without dashboard overlays. The previous broader dashboard's results are not used as proof of this corrected layout. A further short-phone replay check identified limited map space; replay now temporarily hides the metric rail below 720 px viewport height and restores it on close. The final 375×667 browser check passed: document width 375 px, clear route space above the compact card, an 11 px card-to-player gap, and metrics restored after closing replay.
+Replay-specific checks found that the player could cover map navigation controls. Phone replay now places Fit and zoom above the compact evidence card. Below 640 px height, the title/actions card temporarily hides and map controls move beneath the primary navigation. The 375×667 and 375×600 captures show the vehicle, evidence, player, Fit and zoom together, with successful browser hit-tests on the map controls. At 900×850 the narrower player leaves the right-side controls clear. Expanded desktop evidence is positioned below the selected vehicle without covering it, and its remaining metadata scrolls within the card. Expanded phone evidence shows labels, confidence and metadata without dashboard interference.
 
-The latest motion update was reviewed separately in twelve fresh screenshots: desktop dashboard, Survey, Settings, drive inspection and expanded evidence; phone Survey, Settings, Filters, Export, report, player and expanded evidence. Cards align with their triggers, stay within the viewport, and retain accessible close/footer controls while their content scrolls. The primary navigation remains visible above the phone Survey card. No visual clipping or overflow was found in these reviewed states. Static screenshots establish final geometry; lifecycle tests and browser interaction checks establish opening, closing and focus behavior. Native-browser validation also caught and fixed deferred keyboard focus return after the modal report closes.
+Evidence, player and legend overlays live outside the map container, so opening them does not raise the whole map over the navigation. The legend-open browser check confirmed that navigation remained reachable. Static screenshots establish final geometry; controller tests and browser interactions establish opening, closing, focus and playback behavior.
 
-Motion durations match the reference interface: navigation 400 ms with `cubic-bezier(.22,1,.36,1)`, Survey/Filters/About 300 ms with an 8 px vertical offset, utility cards 250 ms, and evidence entrance/desktop width 550 ms. Reduced motion removes transitions and close delays. Playback frame updates do not repeat the evidence entrance. Floating cards retain opaque surfaces to avoid the WebGL backdrop artifacts found during the earlier review.
+Motion durations match the reference interface: navigation 400 ms with `cubic-bezier(.22,1,.36,1)`, Survey/Filters/About 300 ms with an 8 px vertical offset, utility cards 250 ms, and evidence entrance/desktop width 550 ms. Reduced motion removes transitions and close delays. Playback frame updates do not repeat the evidence entrance. Floating cards retain near-opaque surfaces to avoid WebGL backdrop artifacts.
+
+## Earlier verification history
+
+Previous revisions were reviewed at desktop 855×853 and 1440×900, and phones 375×812 and 375×667. Those checks established the drive-only scope, readable two-row metrics, expanded evidence content, internal card scrolling, the frame-strip behavior and anchored controls. A native-browser check also caught and fixed keyboard focus returning before the modal report had closed. These results remain useful regression history; their older inset-map screenshots and exact spacing measurements are not evidence for the current full-map geometry.
 
 ## Re-run
 
@@ -61,7 +65,7 @@ python3 verification/sample-truth.py
 
 Copy only `webgis/` to the production server. Test code, package metadata and verification logs are optional handoff evidence.
 
-## Repository integration review
+## Earlier repository integration review
 
 The repository handoff and original sample ZIP match the sources used for development. A fresh install from the pinned dependency lock and `npm test` passed all 66 tests, including 36 UI tests. The added cases cover portable Python selection and all advanced detector scores, preserving zero values while showing missing values as unavailable. An explicit Python override also passed the five sample-contract tests. Windows launcher selection is tested with controlled fixtures; native Windows execution is not claimed. All 19 HTTP checks and 58 sample checks were rerun from the repository copy.
 

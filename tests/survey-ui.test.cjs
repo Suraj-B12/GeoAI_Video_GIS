@@ -185,7 +185,7 @@ async function boot(t, options = {}) {
     setData(...value) { this.data = value; }
     setLayers(value) { this.layers = value; }
     setTheme(value) { this.theme = value; }
-    fitBBox(value) { this.fits.push(value); }
+    fitBBox(value) { this.fits.push(value);(this.fitLoadingStates||=[]).push(w.document.body.classList.contains('initial-loading')); }
     select(value) { this.selected = value; }
     clearSelection() { this.selected = null; }
     getView() { return { lat: 12.93, lng: 77.565, zoom: this.zoom }; }
@@ -227,6 +227,7 @@ test('video-only boot defaults to metadata Potholes with only Video and Survey n
   assert.doesNotMatch(app.w.document.body.textContent,/citizen|walking|walk survey/i);
   assert.ok(app.requests.filter(r=>r.url.pathname.endsWith('segments.geojson')).every(r=>r.url.searchParams.get('label')==='Potholes'));
   assert.deepEqual(app.map.fits[0], bbox);
+  assert.equal(app.map.fitLoadingStates[0],false,'initial fit measures the visible floating controls rather than their loading-hidden state');
   assert.equal(app.w.document.querySelectorAll('[data-session]').length, 1);
   assert.equal(app.w.document.getElementById('notice').hidden, true);
   assert.deepEqual(app.errors, []);
@@ -757,6 +758,46 @@ test('real sample default dashboard shows exactly 131 drive Potholes with metada
 function clickOutside(app){const target=app.w.document.getElementById('surveyMap');target.dispatchEvent(new app.w.MouseEvent('pointerdown',{bubbles:true}));target.click();}
 function escape(app){app.w.document.dispatchEvent(new app.w.KeyboardEvent('keydown',{key:'Escape',bubbles:true,cancelable:true}));}
 
+test('full-viewport evidence avoids floating controls and reclaims player space without losing the selected frame',async t=>{
+  const app=await boot(t,{fakeClock:true});const w=app.w,doc=w.document;
+  w.innerWidth=1440;w.innerHeight=900;
+  const rectangle=(left,top,width,height)=>({left,top,width,height,right:left+width,bottom:top+height});
+  const measure=(selector,left,top,width,height)=>{const element=doc.querySelector(selector),rect=rectangle(left,top,width,height);element.getBoundingClientRect=()=>rect;return element;};
+  measure('#surveyMap',0,0,1440,900);
+  const controls=[measure('.topbar',24,20,460,64),measure('.dashboard-heading',936,20,480,76),measure('.dashboard-stats',936,108,480,142),measure('#activeFilters',936,262,480,30),measure('#driveControl',24,100,274,48),measure('.toolbar',310,100,48,48),measure('.legend-control',1230,834,110,38),measure('.map-tools',1376,736,40,40),measure('.map-status',24,834,240,38)];
+  const strip=measure('#stripPanel',230,680,980,180),panel=doc.getElementById('detailPanel');
+  Object.defineProperty(panel,'offsetWidth',{get:()=>panel.classList.contains('expanded')?480:390});
+  Object.defineProperty(panel,'offsetHeight',{get:()=>panel.classList.contains('expanded')?900:120});
+  Object.defineProperty(panel,'scrollHeight',{get:()=>900});
+  let anchor={x:1380,y:120};app.map.anchorFor=()=>anchor;
+  const evidenceBox=()=>rectangle(parseFloat(panel.style.left),parseFloat(panel.style.top),panel.offsetWidth,Math.min(panel.classList.contains('expanded')?panel.scrollHeight:panel.offsetHeight,parseFloat(panel.style.maxHeight)));
+  const overlaps=(a,b)=>a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top;
+  const assertClear=()=>{const rect=evidenceBox();assert.ok([rect.left,rect.top,rect.width,rect.height].every(Number.isFinite));assert.ok(rect.height>0);assert.ok(rect.left>=16&&rect.top>=16&&rect.right<=w.innerWidth-16&&rect.bottom<=w.innerHeight-16,'evidence remains inside the full map viewport');assert.ok(anchor.x<rect.left||anchor.x>rect.right||anchor.y<rect.top||anchor.y>rect.bottom,'compact and expanded evidence must leave the selected vehicle visible');for(const control of controls)if(!control.hidden&&w.getComputedStyle(control).visibility!=='hidden')assert.equal(overlaps(rect,control.getBoundingClientRect()),false,`evidence must not cover ${control.id||control.className}`);return rect;};
+  app.map.callbacks.onSelect(app.video[0]);assertClear();
+  doc.getElementById('expandDetail').click();assertClear();
+  assert.equal(app.map.selected,app.video[0]);
+  doc.getElementById('expandDetail').click();anchor={x:1380,y:800};
+  doc.getElementById('driveReplay').click();await settle();
+  const compact=assertClear();assert.ok(compact.bottom<=strip.getBoundingClientRect().top-12,'compact evidence leaves the active player accessible');
+  const compactRoom=parseFloat(panel.style.maxHeight);
+  doc.getElementById('expandDetail').click();const expanded=assertClear();
+  assert.ok(parseFloat(panel.style.maxHeight)>compactRoom,'expanded inspection can use the space of the temporarily hidden player');
+  assert.ok(expanded.bottom>strip.getBoundingClientRect().top);
+  doc.getElementById('expandDetail').click();doc.getElementById('closeStrip').click();
+  assert.ok(assertClear().bottom>strip.getBoundingClientRect().top,'closing replay restores the lower map space');
+  w.innerWidth=900;w.innerHeight=850;measure('#surveyMap',0,0,900,850);anchor={x:397,y:309};
+  measure('.topbar',20,20,420,64);measure('.dashboard-heading',550,20,330,100);measure('.dashboard-stats',550,132,330,142);measure('#activeFilters',550,286,330,30);measure('#driveControl',20,100,274,48);measure('.toolbar',306,100,48,48);measure('.legend-control',713,784,110,38);measure('.map-tools',836,686,40,40);measure('.map-status',24,784,240,38);
+  w.dispatchEvent(new w.Event('resize'));assertClear();
+  doc.getElementById('expandDetail').click();assertClear();
+  doc.getElementById('expandDetail').click();assertClear();
+  for(const control of controls)control.style.visibility='hidden';anchor={x:w.innerWidth-60,y:70};w.dispatchEvent(new w.Event('resize'));
+  assert.ok(assertClear().top<100,'hidden overlays must not leave a reserved band');
+  w.innerWidth=375;w.innerHeight=667;w.dispatchEvent(new w.Event('resize'));
+  assert.equal(panel.style.left,'');assert.equal(panel.style.top,'');assert.equal(panel.style.maxHeight,'');
+  assert.equal(doc.getElementById('cardConnector').hidden,true,'the phone layout owns its bottom-sheet placement');
+  assert.equal(app.map.selected,app.video[0],'responsive layout changes preserve the selected observation');
+});
+
 test('Survey is a nonmodal anchored surface with synchronized navigation and focus-return dismissal',async t=>{
   const app=await boot(t,{fakeClock:true});
   const doc=app.w.document,survey=doc.getElementById('surveyNav'),video=doc.getElementById('videoNav'),panel=doc.getElementById('overviewDialog');
@@ -823,6 +864,10 @@ test('toolbar surfaces exclude each other, keep internal interactions open, and 
   escape(app);app.advance(1000);await settle();
   assert.equal(legend.open,false);
   assert.equal(doc.activeElement,legendButton);
+  driveButton.click();app.advance(32);const fits=app.map.fits.length;
+  doc.getElementById('driveFocus').click();app.advance(1000);await settle();
+  assert.equal(drives.hidden,true,'focusing a drive dismisses the drive picker');
+  assert.equal(app.map.fits.length,fits+1);
 });
 
 test('reopening Survey during its close motion cancels stale closure and cannot steal focus back',async t=>{

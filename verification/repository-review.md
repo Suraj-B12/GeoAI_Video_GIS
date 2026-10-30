@@ -21,3 +21,7 @@ The independent integration review identified and resolved two gaps: the advance
 - Authored browser assets checked for credentials and absolute workstation paths; none found. Relative assets and screenshot links resolve.
 
 The real FastAPI/VLM host, production-volume latency and LAN preview performance remain receiving-environment checks. Optional time slider and captured-map PDF remain unimplemented; selected-frame replay, filter URLs, printable tables and dark mode are included. GitHub publication is authorized; deployment to the VLM host is a separate action.
+
+## Full-map layout revision
+
+Following the owner's request, the map now fills the viewport with floating navigation, summary metrics, drive/settings controls and evidence. Route fitting and evidence placement use measured free space; the selected vehicle stays visible. Cards and legend are separate from the map layer so they cannot raise the whole map over navigation. Phone replay frees the metrics space and moves Fit/zoom above the player. The final suite passes **69/69** (37 UI), with browser review at 1440×900, 900×850, 375×812, 375×667 and 375×600. See fullmap screenshots for the current layout.

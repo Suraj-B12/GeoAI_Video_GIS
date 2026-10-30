@@ -149,6 +149,8 @@
       if(!urlHasLabels&&defaultLabel)state.filters.label=[defaultLabel];
       if(state.filters.session&&!state.sessions.some(s=>s.session_id===state.filters.session))state.filters.session='';
       if(Number(meta.video?.segments)>5000&&!state.filters.session&&!state.filters.date_from&&!state.filters.date_to&&state.sessions.length)state.filters.session=state.sessions[0].session_id;
+      // Measure the floating controls for the first fit while the loader still covers the map.
+      document.body.classList.remove('initial-loading');
       map?.setMeta(meta);map?.setSessions(state.sessions);map?.fitBBox(meta.video?.bbox);
       state.ready=true;renderFilterControls();renderLegend();renderSessions();
       await load();
@@ -462,13 +464,35 @@
     const anchor=map?.anchorFor?.(state.selected)||{x:bounds.left+bounds.width*.52,y:bounds.top+bounds.height*.5};
     const topLimit=bounds.top+16,bottomLimit=bounds.bottom-16;
     const stripTop=state.stripOpen&&!state.expanded&&!$('stripPanel').hidden?Math.min(bottomLimit,$('stripPanel').getBoundingClientRect().top-12):bottomLimit;
-    panel.style.maxHeight=Math.max(180,stripTop-topLimit)+'px';
-    const width=Math.min(parseFloat(getComputedStyle(panel).getPropertyValue('--evidence-target-width'))||panel.offsetWidth||320,bounds.width-32),height=state.expanded?Math.min(panel.scrollHeight,parseFloat(panel.style.maxHeight)):panel.offsetHeight||270;
-    const rightSide=anchor.x+40+width<bounds.right-16;
-    let left=rightSide?anchor.x+42:anchor.x-width-42;
-    left=Math.max(bounds.left+16,Math.min(bounds.right-width-16,left));
-    const top=Math.max(topLimit,Math.min(stripTop-height,anchor.y-height*.4));
-    panel.style.left=left+'px';panel.style.top=top+'px';
+    const width=Math.min(parseFloat(getComputedStyle(panel).getPropertyValue('--evidence-target-width'))||panel.offsetWidth||320,bounds.width-32);
+    const wantedHeight=state.expanded?panel.scrollHeight||480:panel.offsetHeight||120;
+    const clampLeft=value=>Math.max(bounds.left+16,Math.min(bounds.right-width-16,value));
+    const preferRight=anchor.x+42+width<bounds.right-16;
+    const preferredLeft=clampLeft(preferRight?anchor.x+42:anchor.x-width-42);
+    const desiredTop=anchor.y-wantedHeight*.4;
+    // The map fills the viewport; evidence must use the gaps between floating controls.
+    const obstacles=[...document.querySelectorAll('.topbar,.dashboard-heading,.dashboard-stats,#activeFilters,#driveControl,.toolbar,.legend-control,.map-tools,.map-status,.leaflet-control-zoom')].flatMap(element=>{
+      const style=getComputedStyle(element),rect=element.getBoundingClientRect();
+      return element.hidden||style.display==='none'||style.visibility==='hidden'||!rect.width||!rect.height?[]:[rect];
+    });
+    // Keep the selected vehicle visible beside its evidence, even on narrower desktops.
+    obstacles.push({left:anchor.x-18,right:anchor.x+18,top:anchor.y-18,bottom:anchor.y+18});
+    const placements=[];
+    for(const left of new Set([preferredLeft,clampLeft(anchor.x+42),clampLeft(anchor.x-width-42),bounds.left+16,bounds.right-width-16])){
+      let gaps=[[topLimit,stripTop]];
+      for(const rect of obstacles){
+        if(left+width<=rect.left-12||left>=rect.right+12)continue;
+        gaps=gaps.flatMap(([start,end])=>rect.bottom+12<=start||rect.top-12>=end?[[start,end]]:[[start,Math.min(end,rect.top-12)],[Math.max(start,rect.bottom+12),end]].filter(([a,b])=>b>a));
+      }
+      for(const [start,end] of gaps){
+        if(end-start<Math.min(wantedHeight,state.expanded?180:120))continue;
+        const height=Math.min(wantedHeight,end-start),top=Math.max(start,Math.min(end-height,desiredTop));
+        placements.push({left,top,height,maxHeight:end-start,score:(wantedHeight-height)*3+Math.abs(top-desiredTop)+Math.abs(left-preferredLeft)*.3});
+      }
+    }
+    const best=placements.sort((a,b)=>a.score-b.score)[0]||{left:preferredLeft,top:Math.max(topLimit,Math.min(stripTop-wantedHeight,desiredTop)),height:Math.min(wantedHeight,stripTop-topLimit),maxHeight:Math.max(120,stripTop-topLimit)};
+    const {left,top,height}=best,rightSide=left>=anchor.x;
+    panel.style.maxHeight=best.maxHeight+'px';panel.style.left=left+'px';panel.style.top=top+'px';
     if(connector){const line=connector.querySelector('line');connector.hidden=false;line?.setAttribute('x1',anchor.x);line?.setAttribute('y1',anchor.y);line?.setAttribute('x2',rightSide?left:left+width);line?.setAttribute('y2',top+Math.min(height/2,130));}
   }
   function cacheResults(video,coverage,geom){
@@ -498,7 +522,7 @@
   $('videoNav')?.addEventListener('click',()=>{closeAllFlows();setNav('video');map?.invalidateSize();});
   $('surveyNav')?.addEventListener('click',()=>toggleFlow('overviewDialog'));
   $('driveSelect')?.addEventListener('change',event=>chooseSession(event.target.value));
-  $('driveFocus')?.addEventListener('click',()=>{const s=state.sessions.find(s=>s.session_id===state.inspectSession);map?.fitBBox(s?.bbox||state.meta?.video?.bbox);});
+  $('driveFocus')?.addEventListener('click',()=>{closeFlow('drivePanel');const s=state.sessions.find(s=>s.session_id===state.inspectSession);map?.fitBBox(s?.bbox||state.meta?.video?.bbox);});
   $('driveReplay')?.addEventListener('click',openReplay);
   $('closeStrip')?.addEventListener('click',()=>{pause();state.stripOpen=false;renderStrip();positionCard();});
   registerFlow('overviewDialog','surveyNav');registerFlow('filterDialog','filterButton',{align:'end'});registerFlow('aboutDialog','aboutButton');

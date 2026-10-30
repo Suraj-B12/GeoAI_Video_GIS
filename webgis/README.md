@@ -1,6 +1,6 @@
 # GEOAI Video road surveys
 
-A separate, read-only road-engineering dashboard for the `geoai.gis.v1` drive-video API. **This application contains drive surveys only.** It does not load citizen or walking observations, and it does not change the main GEOAI website.
+A separate, read-only road-engineering map workspace for the `geoai.gis.v1` drive-video API. **This application contains drive surveys only.** It does not load citizen or walking observations, and it does not change the main GEOAI website.
 
 The initial view selects **Potholes** from the server's metadata. The full video taxonomy remains available in Filters for the handoff's inspection and coverage workflows. Reset filters returns to the pothole view.
 
@@ -24,11 +24,13 @@ window.GIS_CONFIG = { apiBase: "" };
 
 The browser calls the existing read-only `/gis/*` API. No additional backend, database connection, credentials or build step is required. Application assets use relative paths. For separately hosted development, `apiBase` can point to a reachable GIS API origin with suitable CORS settings. Deployment to the VLM server is separate from this repository.
 
-## Dashboard and controls
+## Map and controls
+
+The map fills the entire viewport. GEOAI navigation floats at the upper left; the title, actions and current-filter metrics sit in compact cards at the upper right on desktop. Drive inspection and map settings remain separate floating controls. On phones, the metric card uses two columns with map space visible beside it. Replay temporarily hides the phone metrics and filter chips to keep the route visible, then restores them when closed.
 
 - **Video** returns to the map, evidence and route player. **Survey** opens the analysis card directly beneath its navigation pill. These are the only primary navigation items; the active highlight slides between them.
 - **Filters** and **Export** are separate dashboard actions. They open cards beside their controls. The GEOAI logo opens About the data; the map gear opens layers and light/dark presentation. The legend opens upward from its map button.
-- The persistent metrics describe **current filters**: matching road length, distress within that selection, segments awaiting expert review and classified length. They do not claim to describe the whole route when a distress filter is active.
+- The floating metric card describes **current filters**: matching road length, distress within that selection, segments awaiting expert review and classified length. They do not claim to describe the whole route when a distress filter is active.
 - Select the **surveyed routes** distance capsule to open **Inspect a drive**. Choosing a drive focuses it without hiding the other route tracks or silently changing the observation filters. Use the explicit session filter to restrict observations and statistics to one drive.
 - A segment opens a compact photo card. **View details** shows final labels, model/expert provenance, confidence, local time, position uncertainty, frame quality and detector details. Expanding the card pauses playback and temporarily hides the strip to leave room for the evidence. Closing restores the player.
 - **Replay drive** opens the virtualized strip of matching frames, ordered along the chosen drive. Select a thumbnail or use left/right keys within the strip; playback supports 1–5 segments per second. The vehicle, segment highlight, card and strip remain synchronized.
@@ -55,7 +57,7 @@ Surveyed means covered send/audit/skip segments. Not covered means missing evide
 - Drive tracks, low-zoom video clusters, canvas footprints at street zoom, coverage lines, severity heatmap and historical wards with hover totals.
 - Date, multi-label, severity, review, confidence, session, model-class and gate-status filters; authoritative API summaries and filtered CSV.
 - Compact and expanded evidence cards, virtualized thumbnails, synchronized route playback and per-km reporting.
-- Responsive desktop/phone layout, visible metrics, keyboard controls, filter URLs, light/dark maps and a printable tabular report. On phones shorter than 720 px, replay temporarily uses the metric rail's space so the moving route remains visible; closing the player restores the metrics.
+- Full-viewport desktop/phone map, floating metrics and controls, keyboard navigation, filter URLs, light/dark maps and a printable tabular report. Phone replay temporarily hides the metric card; closing the player restores it.
 - Loading, empty, missing-image and error states, request cancellation, stale-response protection and 30-second recovery after a connection failure.
 
 The primary basemap uses the main GIS's keyless OpenFreeMap/MapLibre approach, with OpenStreetMap fallback. Map imagery needs internet access; drive images come from the configured GIS API. Code, fonts, runtime libraries and historical ward boundaries are bundled locally. Floating controls use near-opaque surfaces to avoid WebGL backdrop-blur artifacts.
@@ -85,21 +87,15 @@ See [TEST-LOG.md](TEST-LOG.md) for executed tests and their limits. Optional tes
 
 ## Screenshots
 
-![Default pothole dashboard](screenshots/motion-dashboard-desktop.jpg)
+These captures show the current full-map layout.
 
-![Expanded road evidence](screenshots/motion-evidence-desktop.jpg)
+![Full-map video survey workspace](screenshots/fullmap-desktop.jpg)
 
-![Phone player](screenshots/motion-player-mobile.jpg)
+![Survey card flowing from the navigation](screenshots/fullmap-survey-desktop.jpg)
 
-![Survey card anchored below navigation](screenshots/motion-survey-desktop.jpg)
+![Phone map and floating controls](screenshots/fullmap-mobile.jpg)
 
-![Map settings card](screenshots/motion-settings-desktop.jpg)
-
-![Drive inspection card](screenshots/motion-drive-desktop.jpg)
-
-![Phone Survey card](screenshots/motion-survey-mobile.jpg)
-
-![Phone filter card](screenshots/motion-filters-mobile.jpg)
+![Phone route player with clear map space](screenshots/fullmap-player-mobile.jpg)
 
 ## Licences
 

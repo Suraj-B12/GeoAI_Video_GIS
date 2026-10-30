@@ -343,24 +343,52 @@
         return rect.width > 0 && rect.height > 0 && rect.right > bounds.left && rect.left < bounds.right &&
           rect.bottom > bounds.top && rect.top < bounds.bottom ? rect : null;
       };
-      const area = { left: mobile ? 20 : 32, top: 24, right: size.x - (mobile ? 62 : 72), bottom: size.y - (mobile ? 70 : 58) };
-      const header = visibleRect(document.querySelector('.topbar'));
-      if (header) area.top = Math.max(area.top, header.bottom - bounds.top + 18);
-      const drive = visibleRect(document.getElementById('driveControl'));
-      if (drive) {
-        if (mobile) area.top = Math.max(area.top, drive.bottom - bounds.top + 18);
-        else area.left = Math.max(area.left, drive.right - bounds.left + 20);
+      const base = { left: mobile ? 20 : 32, top: 24, right: size.x - (mobile ? 62 : 72), bottom: size.y - (mobile ? 70 : 58) };
+      base.right = Math.max(base.left + 32, base.right);
+      base.bottom = Math.max(base.top + 32, base.bottom);
+      // Floating cards do not occupy a full row or column. Find the largest
+      // clear rectangle among their measured edges so a right-hand summary
+      // does not unnecessarily remove the map's right side at every height.
+      const selectors = ['.topbar', '.dashboard-heading', '.dashboard-stats', '#activeFilters', '#driveControl', '.toolbar', '#stripPanel', '.legend-control', '.map-tools', '.map-status', '.leaflet-control-zoom'];
+      if (includeDetail && mobile) selectors.push('#detailPanel');
+      const obstacles = selectors.map(selector => {
+        const rect = visibleRect(document.querySelector(selector));
+        if (!rect) return null;
+        const verticalGap = selector === '#stripPanel' || selector === '#detailPanel' ? 20 : 18;
+        const obstruction = {
+          left: Math.max(base.left, rect.left - bounds.left - 20),
+          right: Math.min(base.right, rect.right - bounds.left + 20),
+          top: Math.max(base.top, rect.top - bounds.top - verticalGap),
+          bottom: Math.min(base.bottom, rect.bottom - bounds.top + verticalGap)
+        };
+        return obstruction.right > obstruction.left && obstruction.bottom > obstruction.top ? obstruction : null;
+      }).filter(Boolean);
+      if (!obstacles.length) return base;
+      const edges = [...new Set([base.left, base.right, ...obstacles.flatMap(rect => [rect.left, rect.right])])].sort((a, b) => a - b);
+      let best = null, bestArea = -1, bestDistance = Infinity;
+      const consider = (left, top, right, bottom) => {
+        if (right <= left || bottom <= top) return;
+        const area = (right - left) * (bottom - top);
+        const distance = Math.abs(left + right - base.left - base.right) + Math.abs(top + bottom - base.top - base.bottom);
+        if (area > bestArea || area === bestArea && distance < bestDistance) {
+          best = { left, top, right, bottom }; bestArea = area; bestDistance = distance;
+        }
+      };
+      for (let leftIndex = 0; leftIndex < edges.length - 1; leftIndex++) {
+        for (let rightIndex = leftIndex + 1; rightIndex < edges.length; rightIndex++) {
+          const left = edges[leftIndex], right = edges[rightIndex];
+          const blocked = obstacles.filter(rect => rect.left < right && rect.right > left).sort((a, b) => a.top - b.top);
+          let top = base.top;
+          for (const rect of blocked) {
+            consider(left, top, right, rect.top);
+            top = Math.max(top, rect.bottom);
+          }
+          consider(left, top, right, base.bottom);
+        }
       }
-      for (const id of ['stripPanel', ...(includeDetail && mobile ? ['detailPanel'] : [])]) {
-        const rect = visibleRect(document.getElementById(id));
-        if (rect) area.bottom = Math.min(area.bottom, rect.top - bounds.top - 20);
-      }
-      // Keep a usable sliver on short screens without manufacturing a zoom jump.
-      area.bottom = Math.max(40, area.bottom);
-      area.top = Math.max(12, Math.min(area.top, area.bottom - 32));
-      area.right = Math.max(56, area.right);
-      area.left = Math.max(12, Math.min(area.left, area.right - 32));
-      return area;
+      // A full-height evidence sheet can intentionally cover the map on a phone.
+      // Keep finite fit bounds until that sheet closes; no zoom is manufactured.
+      return best || base;
     }
     keepSelectionVisible() {
       if (!this.selected || !this.selectionVisible() || !this.map._loaded) return;

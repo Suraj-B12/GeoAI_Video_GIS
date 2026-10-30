@@ -184,3 +184,56 @@ test('inset fit padding reserves only controls overlapping the map and video-onl
   assert.equal(map.video.length,1);assert.equal(map.citizen.length,0);assert.equal(map.layers.citizen,false);
   assert.equal(map.groups.citizen.getLayers().length,0);
 });
+
+function floatingControl(w,selector,left,top,width,height){
+  const element=w.document.createElement('section');
+  if(selector.startsWith('#'))element.id=selector.slice(1);else element.className=selector.slice(1);
+  element.getBoundingClientRect=()=>({left,top,right:left+width,bottom:top+height,width,height});
+  w.document.body.append(element);return element;
+}
+function overlaps(a,b){return a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top;}
+
+test('full-viewport fitting and route following keep the road clear of floating dashboard controls',t=>{
+  const {map,w}=setupMap(t,1440,900);
+  map.map.getContainer().getBoundingClientRect=()=>({left:0,top:0,right:1440,bottom:900,width:1440,height:900});
+  const controls=[floatingControl(w,'.topbar',24,20,460,64),floatingControl(w,'.dashboard-heading',936,20,480,76),floatingControl(w,'.dashboard-stats',936,108,480,142),floatingControl(w,'#activeFilters',936,262,480,30),floatingControl(w,'#driveControl',24,100,274,48),floatingControl(w,'.toolbar',310,100,48,48),floatingControl(w,'.map-status',24,834,240,38),floatingControl(w,'.legend-control',1230,834,110,38),floatingControl(w,'.map-tools',1376,736,40,40),floatingControl(w,'.leaflet-control-zoom',1376,800,40,72)];
+  const area=map.availableViewport();
+  assert.ok(area.right-area.left>1200,'right-side metrics must not reserve their width for the entire map height');
+  for(const control of controls)assert.equal(overlaps(area,control.getBoundingClientRect()),false);
+  const bbox=[77.56,12.92,77.57,12.94];map.fitBBox(bbox);
+  for(const corner of [[bbox[1],bbox[0]],[bbox[3],bbox[2]]]){const point=map.map.latLngToContainerPoint(corner);assert.ok(point.x>=area.left-1&&point.x<=area.right+1&&point.y>=area.top-1&&point.y<=area.bottom+1,'fit places the complete route in the clear map region');}
+  const zoom=map.map.getZoom();
+  for(const [name,point] of [['metrics',[1150,180]],['status',[100,838]],['legend',[1280,850]]]){
+    const obscured=map.map.containerPointToLatLng(point);
+    const f=feature(`under-${name}`,{centre_lat:obscured.lat,centre_lon:obscured.lng},{type:'Point',coordinates:[obscured.lng,obscured.lat]});
+    map.select(f,{pan:true});const anchor=map.anchorFor(f);
+    assert.ok(anchor.x>=area.left&&anchor.x<=area.right&&anchor.y>=area.top&&anchor.y<=area.bottom);
+    for(const control of controls){const r=control.getBoundingClientRect();assert.ok(anchor.x<r.left||anchor.x>r.right||anchor.y<r.top||anchor.y>r.bottom,`the selected vehicle cannot remain behind ${name}`);}
+    assert.equal(map.map.getZoom(),zoom,'following preserves the chosen zoom');
+  }
+});
+
+test('phone replay uses space released by hidden metrics and keeps the vehicle above its evidence and player',t=>{
+  const {map,w}=setupMap(t,375,812);
+  map.map.getContainer().getBoundingClientRect=()=>({left:0,top:0,right:375,bottom:812,width:375,height:812});
+  floatingControl(w,'.topbar',12,12,351,56);floatingControl(w,'.dashboard-heading',12,80,351,56);
+  const metrics=floatingControl(w,'.dashboard-stats',12,148,244,132),drive=floatingControl(w,'#driveControl',12,292,244,44);
+  floatingControl(w,'.toolbar',321,148,42,42);
+  const chips=floatingControl(w,'#activeFilters',12,348,351,26);
+  const detail=floatingControl(w,'#detailPanel',24,437,327,108),strip=floatingControl(w,'#stripPanel',24,555,327,185);
+  const blocked=map.availableViewport({includeDetail:true});
+  metrics.style.visibility='hidden';drive.style.visibility='hidden';chips.style.display='none';
+  const clear=map.availableViewport({includeDetail:true});
+  assert.ok((clear.right-clear.left)*(clear.bottom-clear.top)>(blocked.right-blocked.left)*(blocked.bottom-blocked.top),'hidden replay overlays return their map space');
+  assert.equal(overlaps(clear,detail.getBoundingClientRect()),false);
+  assert.equal(overlaps(clear,strip.getBoundingClientRect()),false);
+  map.map.setView([12.93,77.565],17,{animate:false});
+  const point=map.map.containerPointToLatLng([180,480]),f=feature('phone-overlay',{centre_lat:point.lat,centre_lon:point.lng},{type:'Point',coordinates:[point.lng,point.lat]});
+  map.select(f,{pan:true});const anchor=map.anchorFor(f);
+  assert.ok(anchor.y>=clear.top&&anchor.y<=clear.bottom&&anchor.y<detail.getBoundingClientRect().top);
+  assert.equal(map.map.getZoom(),17);
+  detail.hidden=true;strip.hidden=true;metrics.style.visibility='visible';drive.style.visibility='visible';chips.style.display='';
+  const restored=map.availableViewport();
+  assert.equal(overlaps(restored,metrics.getBoundingClientRect()),false,'restored metrics again reserve their visible area');
+  assert.ok(restored.bottom>clear.bottom,'closing the player frees the lower map');
+});

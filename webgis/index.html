@@ -63,10 +63,12 @@
     <section class="map-panel" aria-label="Survey map">
       <div id="surveyMap" aria-label="Map of road surveys in Bengaluru"></div>
       <div class="map-tools"><button id="fitButton" class="tool-button" title="Fit surveys" aria-label="Fit surveys to map"><svg  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M21 16v5h-5M3 16v5h5"></path><circle cx="12" cy="12" r="3"></circle></svg></button></div>
-      <details class="legend-control" id="legendControl"><summary class="map-button" id="legendButton" aria-controls="legend" aria-expanded="false">Map legend</summary><div id="legend" class="legend-content flow-card" hidden></div></details>
       <div class="map-caption"><span class="diamond"></span> Drive-video segment <span class="caption-note">Approximate GNSS position</span></div>
       <div id="mapEmpty" class="map-empty" hidden>No segments match these filters.<button class="text-button" id="clearEmpty">Clear filters</button></div>
     </section>
+  </main>
+      <details class="legend-control" id="legendControl"><summary class="map-button" id="legendButton" aria-controls="legend" aria-expanded="false">Map legend</summary><div id="legend" class="legend-content flow-card" hidden></div></details>
+
     <svg id="cardConnector" class="card-connector" aria-hidden="true"><line></line></svg>
     <aside id="detailPanel" class="detail-panel panel compact" aria-label="Selected observation"></aside>
     <section id="stripPanel" class="strip-panel panel" aria-label="Drive frame strip" hidden>
@@ -74,8 +76,6 @@
       <div id="stripViewport" class="strip-viewport" tabindex="0" role="listbox" aria-label="Survey frames; use left and right arrow keys"><div id="stripTrack" class="strip-track"></div></div>
       <div class="strip-footer"><span>Distance from drive start</span><span>← → to step · click a frame to inspect</span></div>
     </section>
-
-  </main>
   <div class="map-status glass" role="status"><span class="status-dot"></span><span id="mapScope">All drive surveys</span><span class="status-divider"></span><span id="dataStatus">Connecting…</span></div>
   <dialog id="overviewDialog" class="overview-dialog flow-card survey-flow" aria-labelledby="overviewTitle" aria-modal="false">
     <div class="dialog-heading"><div><p class="eyebrow">DRIVE SURVEY REPORT</p><h2 id="overviewTitle">Survey analysis</h2></div><button class="icon-button" data-close="overviewDialog" aria-label="Close overview">×</button></div>
