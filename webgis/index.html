@@ -23,6 +23,7 @@
     </nav>
     <div class="header-context"><span class="status-dot"></span><span>Drive surveys</span><span class="header-region">Bengaluru</span></div>
   </header>
+  <div class="dashboard-overview">
   <section class="dashboard-heading" aria-label="Video survey workspace">
     <div><p class="eyebrow">CURRENT FILTERS · DRIVE VIDEO</p><h1>Video road surveys</h1></div>
     <div class="dashboard-actions"><button type="button" id="filterButton" class="button filter-action" aria-label="Survey filters" aria-controls="filterDialog" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M7 12h10M10 17h4"></path></svg><span>Filters</span><span id="filterCount" class="count" hidden>0</span></button><details class="export-menu" id="exportControl"><summary class="button" id="exportButton" aria-controls="exportPanel" aria-expanded="false">Export <span aria-hidden="true">↗</span></summary><div class="menu flow-card" id="exportPanel" hidden><button id="exportVideo">Video segments · CSV</button><button id="printButton">Print survey report</button></div></details></div>
@@ -33,6 +34,8 @@
     <div class="stat"><span class="stat-label">Awaiting expert review <span class="tiny-dot review"></span></span><strong id="reviewStat">—</strong><small>Video segments · model results</small></div>
     <div class="stat"><span class="stat-label">Classified length <span aria-hidden="true">✓</span></span><strong id="classifiedStat">—</strong><small id="classifiedDetail">Video segments assessed by the model</small></div>
   </section>
+  <div id="activeFilters" class="active-filters" hidden></div>
+  </div>
   <div class="toolbar" aria-label="Map tools">
     <details class="layers-control" id="settingsControl">
       <summary class="tool-button" id="settingsButton" aria-controls="settingsPanel" aria-expanded="false" title="Map settings and layers" aria-label="Map settings and layers"><svg  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33A1.65 1.65 0 0 0 14 20.83V21a2 2 0 0 1-4 0v-.17A1.65 1.65 0 0 0 9 19.32a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15 1.65 1.65 0 0 0 3.17 14H3a2 2 0 0 1 0-4h.17A1.65 1.65 0 0 0 4.68 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68 1.65 1.65 0 0 0 10 3.17V3a2 2 0 0 1 4 0v.17A1.65 1.65 0 0 0 15 4.68a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.32 9 1.65 1.65 0 0 0 20.83 10H21a2 2 0 0 1 0 4h-.17A1.65 1.65 0 0 0 19.4 15Z"></path></svg></summary>
@@ -58,7 +61,6 @@
     </div>
   </section>
   <div id="notice" class="notice" role="status" hidden><span id="noticeText"></span><button id="retryButton">Retry now</button></div>
-  <div id="activeFilters" class="active-filters" hidden></div>
   <main id="workspace" class="workspace" tabindex="-1">
     <section class="map-panel" aria-label="Survey map">
       <div id="surveyMap" aria-label="Map of road surveys in Bengaluru"></div>

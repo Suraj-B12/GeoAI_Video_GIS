@@ -4,7 +4,7 @@ A separate, read-only dashboard for drive-video road surveys. The application li
 
 The implemented scope follows the project owner's later instructions: **drive video only**, Potholes selected initially, and only **Video** and **Survey** in the primary navigation. Citizen/walking observations are excluded. This overrides the two-layer requirement in the original, unchanged [`GIS_VIDEO_HANDOFF.md`](GIS_VIDEO_HANDOFF.md).
 
-![Full-screen map with floating survey controls](webgis/screenshots/fullmap-desktop.jpg)
+![Full-screen map with floating survey controls](webgis/screenshots/typography-desktop.jpg)
 
 ## Run locally
 

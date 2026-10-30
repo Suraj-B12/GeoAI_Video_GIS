@@ -55,7 +55,7 @@
     entry.panel.classList.remove('flow-open','flow-closing');entry.panel.inert=true;
     if(entry.panel.tagName==='DIALOG'){if(entry.panel.open)entry.panel.close();}else entry.panel.hidden=true;
     if(entry.host)entry.host.open=false;
-    if(entry.panel.id==='drivePanel')$('driveControl').classList.remove('flow-host-open');
+    if(entry.panel.id==='drivePanel'){$('driveControl').classList.remove('flow-host-open');syncFloatingGeometry();}
     if(entry.restoreAfterClose&&!Array.from(flowCards.values()).some(card=>card.isOpen))entry.returnTrigger.focus({preventScroll:true});
     entry.restoreAfterClose=false;
   }
@@ -317,7 +317,7 @@
     state.index=Math.max(0,state.strip.findIndex(f=>D.featureId(f)===D.featureId(state.selected||{})));
     $('stripTrack').style.width=`${Math.max(0,state.strip.length*136-8)}px`;
     $('playButton').disabled=!state.strip.length;$('previousButton').disabled=!state.strip.length;$('nextButton').disabled=!state.strip.length;
-    renderStripWindow();setTimeout(()=>map?.invalidateSize(),0);
+    renderStripWindow();syncFloatingGeometry();setTimeout(()=>map?.invalidateSize(),0);
   }
   function renderStripWindow(reveal=false) {
     if($('stripPanel').hidden)return;
@@ -423,7 +423,19 @@
   $('mobileInsights').addEventListener('click',openInsights);
   $('printButton').addEventListener('click',()=>{openInsights();if($('insightsDialog').open)window.print();});
   $('exportVideo').addEventListener('click',()=>{if(!state.meta||state.loading||state.stale)return;const url=api('/gis/video/segments.csv?')+D.params(state.filters,'video',{limit:20000});if(state.videoTotal>20000){notice('Narrow the drive or date filters to at most 20,000 segments before exporting a complete CSV.');return;}window.open(url,'_blank','noopener,noreferrer');});
-  window.addEventListener('resize',()=>{renderStripWindow();map?.invalidateSize();positionCard();syncNavSlider();for(const entry of flowCards.values())if(entry.isOpen)positionFlow(entry);});
+  function syncFloatingGeometry(){
+    const heading=document.querySelector('.dashboard-heading').getBoundingClientRect();
+    document.body.style.setProperty('--overview-heading-bottom',Math.round(heading.bottom)+'px');
+    const strip=$('stripPanel').getBoundingClientRect();
+    if(!$('stripPanel').hidden&&strip.height){
+      document.body.style.setProperty('--replay-height',Math.ceil(strip.height)+'px');
+      document.body.style.setProperty('--replay-bottom',Math.max(0,innerHeight-strip.bottom)+'px');
+    }
+    positionCard();
+    for(const entry of flowCards.values())if(entry.isOpen)positionFlow(entry);
+    if(state.selected&&!state.expanded&&innerWidth<=820)map?.keepSelectionVisible?.();
+  }
+  window.addEventListener('resize',()=>{renderStripWindow();map?.invalidateSize();syncFloatingGeometry();syncNavSlider();});
   function setNav(name){
     activeNav=name;
     const nav=document.querySelector('.nav-pill');if(nav)nav.dataset.active=name;
@@ -534,8 +546,8 @@
   document.addEventListener('pointerdown',event=>{for(const [id,entry] of flowCards)if(entry.isOpen&&!entry.modal&&!entry.panel.contains(event.target)&&!entry.trigger.contains(event.target))closeFlow(id,{restore:false});});
   document.addEventListener('focusin',event=>{for(const [id,entry] of flowCards)if(entry.isOpen&&!entry.modal&&!entry.panel.contains(event.target)&&!entry.trigger.contains(event.target))closeFlow(id,{restore:false});});
   document.addEventListener('keydown',event=>{if(event.key!=='Escape'||event.defaultPrevented)return;const entry=[...flowCards.entries()].find(([,entry])=>entry.isOpen);if(entry){event.preventDefault();closeFlow(entry[0]);}else{closeSelection();document.querySelectorAll('.detail-advanced[open],.report-labels[open]').forEach(el=>el.open=false);}});
-  document.fonts?.ready.then(syncNavSlider);
-  if(window.ResizeObserver){const observer=new ResizeObserver(syncNavSlider);observer.observe(document.querySelector('.nav-pill'));}
+  document.fonts?.ready.then(()=>{syncNavSlider();syncFloatingGeometry();});
+  if(window.ResizeObserver){const observer=new ResizeObserver(()=>{syncNavSlider();syncFloatingGeometry();});for(const element of [document.querySelector('.nav-pill'),document.querySelector('.dashboard-heading'),$('stripPanel')])observer.observe(element);}
   const loader=document.createElement('div');loader.id='initialLoader';loader.className='initial-loader';loader.setAttribute('role','status');loader.innerHTML='<div class="loader-brand"><span class="brand-geo">GEO</span><span class="brand-ai">AI</span></div><p>Preparing survey map…</p>';document.body.append(loader);document.body.classList.add('initial-loading');
   setNav('video');updateExports();readURL();boot();
 })();

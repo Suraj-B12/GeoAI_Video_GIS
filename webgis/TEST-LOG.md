@@ -74,3 +74,9 @@ The repository handoff and original sample ZIP match the sources used for develo
 Run the receiving team's API suite and smoke tests against its real FastAPI/VLM host. Confirm data, internet access, large-volume rendering and LAN preview latency. Deployment and acceptance on the real VLM server remain separate receiving-environment checks.
 
 Latest Survey placement check: the card is left-aligned beneath the road total with a 12 px gap, including at 375×667. The numeric distance uses the same Rostex Outline family as GEO; units and the secondary label remain in Urbanist. No horizontal overflow was observed. All 69 automated tests passed after this update.
+
+## Typography and spacing update
+
+The right-hand metrics now use a content-sized container and wrapped notes. At 1440×900 each metric cell measures about 121 px high with 14 px labels, 36 px values and 12 px supporting text; the outlined distance is 32 px. At 900×850 notes wrap without clipping, and Export remains clickable above other overlays.
+
+Phone checks at 375×667 cover the larger Survey and Filter cards without horizontal overflow. The 375×600 replay keeps its vehicle, evidence, frame count, speed selector and playback buttons visible. Evidence spacing follows the measured player height, and the map adjusts the selection after the drive menu finishes closing. Expanded evidence remains inside the viewport and loads a 1280 px preview. The browser recorded no console errors. All 69 automated tests pass. Earlier screenshots and measurements are retained as layout history.

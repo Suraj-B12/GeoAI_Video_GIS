@@ -142,5 +142,48 @@
     "automated_tests": "69/69",
     "design_review": "Approved",
     "screenshot": "webgis/screenshots/survey-left-update.jpg"
+  },
+  "typography_revision": {
+    "date": "2026-10-30",
+    "scope": "Larger dashboard and card typography with content-sized metrics",
+    "desktop_1440x900": {
+      "metric_card_width_px": 540,
+      "metric_cell_height_px": 120.89,
+      "label_px": 14,
+      "value_px": 36,
+      "supporting_text_px": 12,
+      "distance_number_px": 32,
+      "horizontal_overflow": false
+    },
+    "narrow_desktop_900x850": {
+      "metric_card_width_px": 360,
+      "metric_notes_wrap": true,
+      "export_hit_test": true
+    },
+    "phone_375x667": {
+      "distance_number_px": 28,
+      "survey_gap_below_total_px": 12,
+      "survey_horizontal_overflow": false,
+      "filter_horizontal_overflow": false
+    },
+    "phone_replay_375x600": {
+      "player_height_px": 224.4,
+      "evidence_height_px": 142,
+      "selected_vehicle_visible": true,
+      "playback_horizontal_overflow": false,
+      "evidence_preview_width_px": 1280,
+      "expanded_evidence_horizontal_overflow": false
+    },
+    "validation": {
+      "automated_tests": "69/69",
+      "browser_console_errors": 0,
+      "independent_visual_review": "Desktop, phone Survey and phone replay approved; final map screenshot captured after tiles settled"
+    },
+    "screenshots": [
+      "webgis/screenshots/typography-desktop.jpg",
+      "webgis/screenshots/typography-survey-desktop.jpg",
+      "webgis/screenshots/typography-survey-mobile.jpg",
+      "webgis/screenshots/typography-replay-mobile.jpg"
+    ]
   }
 }

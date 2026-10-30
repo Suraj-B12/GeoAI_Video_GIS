@@ -41,7 +41,7 @@ The map fills the entire viewport. GEOAI navigation floats at the upper left; th
 
 The navigation and cards follow the main GEOAI interface: a 400 ms sliding navigation highlight, 300 ms vertical entry/exit for Survey, Filters and About, and 250 ms utility-card motion. Evidence enters once over 550 ms and changes width over 550 ms on desktop; playback frame changes do not restart its entrance. The detailed per-km report remains a centered modal with a print-friendly layout.
 
-Opening a control closes the other control cards. Escape or a close button dismisses a card and returns keyboard focus to its trigger. Clicking or moving focus outside a nonmodal card dismisses it without interrupting the new target. Controls retain visible keyboard focus. The system's reduced-motion preference removes transitions and close delays. Cards remain within the viewport and scroll internally when their content is taller than the available space.
+Opening a control closes the other control cards. Escape or a close button dismisses a card and returns keyboard focus to its trigger. Clicking or moving focus outside a nonmodal card dismisses it without interrupting the new target. Controls retain visible keyboard focus. The system's reduced-motion preference removes transitions and close delays. Cards remain within the viewport and scroll internally when their content is taller than the available space. The metrics card grows with its labels and supporting notes, which wrap instead of being truncated. Typography is larger across navigation, filters, Survey, reports, evidence and replay; the outlined distance total is the main left-side highlight.
 
 ## Interpreting the sample
 
@@ -89,9 +89,9 @@ See [TEST-LOG.md](TEST-LOG.md) for executed tests and their limits. Optional tes
 
 These captures show the current full-map layout.
 
-![Full-map video survey workspace](screenshots/fullmap-desktop.jpg)
+![Full-map video survey workspace](screenshots/typography-desktop.jpg)
 
-![Survey card beneath the surveyed-roads total](screenshots/survey-left-update.jpg)
+![Survey card beneath the surveyed-roads total](screenshots/typography-survey-desktop.jpg)
 
 ![Phone map and floating controls](screenshots/fullmap-mobile.jpg)
 
